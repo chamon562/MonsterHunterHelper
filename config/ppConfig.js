@@ -13,8 +13,9 @@ passport.serializeUser((user, cb)=>{
 // passport deserializeduser take in object grab the id look up the id in the database 
 passport.deserializeUser((id, cb)=>{
     // cb is callback null, with id
-    cb(null, id)
-    .catch(cb())
+    cb(null, user.id)
+    // just pass call back no need to invoke wtih cb()
+    .catch(cb)
 
 })
 
@@ -36,7 +37,7 @@ passport.use(new localStrategy({
             cb(null, user)
         }
     })
-    .catch(cb())
+    .catch(cb)
 }))
 
 module.exports = passport
