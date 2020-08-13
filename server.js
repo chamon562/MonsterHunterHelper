@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const app = express();
+// want to set up at the top of the page
+const session = require('express-session')
+const SECRET_SESSION = process.env.SECRET_SESSION
 
 app.set('view engine', 'ejs');
 
@@ -9,7 +12,15 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
-
+// middlewear
+// secret: what we actualy giving the client to user to use our site / session cookie
+// resave: save the ession even if its modified, make this false
+// saveUninitialized: new session but hast changed we'll save it
+app.use(session ({
+  secret: SECRET_SESSION,
+  resave: false,
+  saveUninitialized: true
+}))
 app.get('/', (req, res) => {
   res.render('index');
 });
