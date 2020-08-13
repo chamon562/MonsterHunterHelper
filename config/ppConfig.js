@@ -36,5 +36,7 @@ passport.use(new localStrategy({
             cb(null, user)
         }
     })
-    .catch(cb)
+    .catch(cb())
 }))
+
+module.exports = passport

@@ -4,6 +4,8 @@ const layouts = require('express-ejs-layouts');
 const app = express();
 // want to set up at the top of the page
 const session = require('express-session')
+//put passport below msession middle
+const passport = require('./config/ppConfig')
 const SECRET_SESSION = process.env.SECRET_SESSION
 
 app.set('view engine', 'ejs');
@@ -21,6 +23,16 @@ app.use(session ({
   resave: false,
   saveUninitialized: true
 }))
+// make sure to put under app.use(session ) or it will give errors saying it doesnt know what your taling about
+// add middlewear for passort under the use session
+// initialized passport and run session as middleware
+// passport is our login and our logout functionality
+// go to controllers
+app.use(passport.initialize())
+app.use(passport.session())
+
+
+
 app.get('/', (req, res) => {
   res.render('index');
 });
