@@ -13,9 +13,15 @@ passport.serializeUser((user, cb)=>{
 // passport deserializeduser take in object grab the id look up the id in the database 
 passport.deserializeUser((id, cb)=>{
     // cb is callback null, with id
-    cb(null, user.id)
+    // cb(null, user.id)
     // just pass call back no need to invoke wtih cb()
-    .catch(cb)
+    // .catch(cb)
+
+    db.user.findByPk(id)
+    // if that user exist were passing it in the call back 
+    .then(user =>{
+        cb(null, user)
+    }).catch(cb)
 
 })
 

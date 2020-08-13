@@ -4,9 +4,10 @@ const layouts = require('express-ejs-layouts');
 const app = express();
 // want to set up at the top of the page
 const session = require('express-session')
+const SECRET_SESSION = process.env.SECRET_SESSION
 //put passport below msession middle
 const passport = require('./config/ppConfig')
-const SECRET_SESSION = process.env.SECRET_SESSION
+const flash = require('connect-flash')
 
 app.set('view engine', 'ejs');
 
@@ -30,6 +31,9 @@ app.use(session ({
 // go to controllers
 app.use(passport.initialize())
 app.use(passport.session())
+
+// flash for temporary messges to the user error messages sent to the user
+app.use(flash())
 
 
 
