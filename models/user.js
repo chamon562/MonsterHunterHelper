@@ -37,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       type: 
         DataTypes.STRING,
         validate: {
+          // isEmail is a sequelize syntax
           isEmail: {
             msg: 'Invalid email'
           }
@@ -72,6 +73,9 @@ module.exports = (sequelize, DataTypes) => {
   })
   // validPassword is method were making
   user.prototype.validPassword = function(passwordTyped){
+    // comparesynce takes this.password and unhashing encrypting 
+    // it and giving you back actual password and compare with 
+    // password typed in and return boolean at the end
     let correctPassword = bcrypt.compareSync(passwordTyped, this.password)
     // return true or false based on correct password
     return correctPassword
