@@ -39,7 +39,7 @@ router.post('/signup', (req, res)=>{
       // Email already exist
       console.log('Email already exist')
     // FLASH MESSAGE 
-    req.flash('Email already exist. Please try again.')
+      req.flash('Email already exist. Please try again.')
       res.redirect('/auth/signup')
     }
   })
@@ -56,7 +56,7 @@ router.post('/signup', (req, res)=>{
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/auth/login',
-  successFlash: 'Welcom back.',
+  successFlash: 'Welcome back.',
   failureFlash: 'Either email or password is incorrect. Please try again'
 }))
 

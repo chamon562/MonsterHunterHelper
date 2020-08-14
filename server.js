@@ -31,9 +31,21 @@ app.use(session ({
 // go to controllers
 app.use(passport.initialize())
 app.use(passport.session())
-
 // flash for temporary messges to the user error messages sent to the user
+// always put app.use flash after passport if above all the ones for passport wont work
 app.use(flash())
+
+// middleware to have our messages accessible for every view
+// for partials req res next take in at
+app.use((req, res, next) => {
+  // before every request, we will attach our user to res.local
+  res.locals.alerts = req.flash()
+  // this is going to check currentUser for us this is where we get currentUser from
+  res.locals.currentUser = req.user
+  // invoke do the next thing
+  // allows to get information from res.loca and runs a fuction 
+  next()
+})
 
 
 
@@ -42,7 +54,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-  res.render('profile');
+  // if we need to send information to another page we send as an object {alert: req.flash()}
+  res.render('profile', { alert: req.flash() });
 });
 
 app.use('/auth', require('./routes/auth'));

@@ -16,7 +16,6 @@ passport.deserializeUser((id, cb)=>{
     // cb(null, user.id)
     // just pass call back no need to invoke wtih cb()
     // .catch(cb)
-
     db.user.findByPk(id)
     // if that user exist were passing it in the call back 
     .then(user =>{

@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+    <!-- partials here its in alerts folder partials/alerts.ejs -->
+    <% include partials/alerts %>
     <header>
       <nav>
         <ul>
-          <li><a href="/auth/signup">Signup</a></li>
-          <li><a href="/auth/login">Login</a></li>
+          <!-- if no current user show sign up and login page -->
+          <% if (!currentUser) { %>
+            <li><a href="/auth/signup">Signup</a></li>
+            <li><a href="/auth/login">Login</a></li>
+            <!-- else if we have a user theyll only see logout and profile -->
+         <% } else { %>
           <li><a href="/auth/logout">Logout</a></li>
           <li><a href="/profile">Profile</a></li>
+          <% } %>
+          <!-- need middleware for authorization in middleware folder -->
         </ul>
       </nav>
     </header>
