@@ -1,12 +1,14 @@
 <!-- pass some alerts to the view dispaly them on the page
 check to see if theres any alerts -->
 <% if (alerts.error) { %>
+    
     <% alerts.error.forEach (msg =>{ %>
         <div class="alert alert-error"><%= msg %></div>
    <% }) %>
 <% } %>
 <!-- success message -->
 <% if (alerts.success) { %>
+   
     <% alerts.success.forEach (msg =>{ %>
         <div class="alert alert-success"><%= msg %></div>
    <% }) %>

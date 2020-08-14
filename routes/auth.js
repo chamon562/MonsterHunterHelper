@@ -39,7 +39,9 @@ router.post('/signup', (req, res)=>{
       // Email already exist
       console.log('Email already exist')
     // FLASH MESSAGE 
-      req.flash('Email already exist. Please try again.')
+    //error is the event put a comma when we say 
+    // alerts.error is gona look for that key 'error'
+      req.flash('error', 'Email already exist. Please try again.')
       res.redirect('/auth/signup')
     }
   })
@@ -47,7 +49,7 @@ router.post('/signup', (req, res)=>{
     console.log('Error auth.js', err)
     // better to redirect useer back to sign up page
     // messages that we write out so be nice t  peple
-    req.flash(`Error, ufnortunatley..${err}`)
+    req.flash('error',`Error, ufnortunatley..${err}`)
     res.redirect('/auth/signup')
   })
 })
@@ -70,8 +72,8 @@ router.post('/login', passport.authenticate('local', {
 // making log out
 router.get('/logout', (req, res)=>{
   req.logout()
-  //FLASH MESSAGE
-  req.flash('See you soon. Logging out.')
+  //FLASH MESSAGE added in success as he key
+  req.flash('success','See you soon. Logging out.')
   res.redirect('/')
 
 })

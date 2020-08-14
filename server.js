@@ -8,6 +8,10 @@ const SECRET_SESSION = process.env.SECRET_SESSION
 //put passport below msession middle
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
+// middleware require the authorization at the top of the page
+// the only page we want to put middleware is mainly profile page this will handle for us
+// can pass isLoggedIn our profile rout
+const isLoggedIn = require('./middleware/isLoggedIn')
 
 app.set('view engine', 'ejs');
 
@@ -50,12 +54,14 @@ app.use((req, res, next) => {
 
 
 app.get('/', (req, res) => {
-  res.render('index');
+  console.log(res.locals.alerts)
+  // console.log(req.flash())
+  // if we need to send information to another page we send as an object {alert: req.flash()}
+  res.render('index', { alerts: res.locals.alerts});
 });
 
-app.get('/profile', (req, res) => {
-  // if we need to send information to another page we send as an object {alert: req.flash()}
-  res.render('profile', { alert: req.flash() });
+app.get('/profile', isLoggedIn, (req, res) => {
+  res.render('profile');
 });
 
 app.use('/auth', require('./routes/auth'));
