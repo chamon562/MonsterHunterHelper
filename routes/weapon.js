@@ -14,15 +14,14 @@ router.get('/', (req, res)=>{
     })
 })
 
-router.get('/:type', (req, res)=>{
-    let type = req.params.type
-    let weaponUrl = `https://mhw-db.com/weapons/${type}`
+router.get('/', (req, res)=>{
+    let weaponUrl = 'https://mhw-db.com/weapons'
     axios.get(weaponUrl)
     .then(function(apiResponse){
         
         let weapon = apiResponse.data
         console.log(weapon)
-        res.render('weapons', {weapon})
+        res.render('index', {weapon})
     })
     .catch(error =>{
         console.log('error', error)
