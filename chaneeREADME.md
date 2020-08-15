@@ -73,7 +73,55 @@ static associate(models) {
 ## Goal for tomorrow aug 15th 2020
 - Goal is to set up a model associate the user and the weapon, be able to get into the monster hunter api and have favorites on click for the user.
 # TO DO
-- pull from the monster hunter name and weapons from the api
+- pull from the monster hunter name  from the api
 - set up get routes
-- set up ejs to show on page 
+<!-- - set up ejs to show on page -->
 
+### aug 15th, 2020 progresss
+
+1. weapons.ejs route shows controller linked in line 68 server.js
+- 
+```js
+app.use('/weapon', require('./routes/weapon'))
+```
+2.  got data from monster hunter api 
+```js
+router.get('/', (req, res)=>{
+    console.log('weapons route')
+   
+    let weaponsUrl = 'https://mhw-db.com/weapons'
+    axios.get(weaponsUrl)
+    .then(function(apiResponse){
+        let weapons = apiResponse.data
+        console.log('--------------------')
+        console.log(weapons)
+        console.log('--------------------')
+        // render from views folder and name of exact ejs file
+        res.render('weapons', {weapons})
+    })
+    .catch(error =>{
+        console.log('error', error)
+        res.render('error')
+    })
+})
+```
+
+3. shows data name and type from weapons.ejs
+```js
+div id="wep">
+  <% if(weapons.length) { %> <% weapons.forEach(w =>{%>
+  <ul>
+    <a href="/weapon/<%= w.type%>">
+      <h2><%= w.type %></h2>
+      <p><%= w.name %> </p>
+    <%= console.log(w.assets) %> 
+
+    </a>
+  </ul>
+
+  <% }) %> 
+  <% } else{ %>
+  <h2>No weapons shown</h2>
+  <% } %>
+</div>
+```
