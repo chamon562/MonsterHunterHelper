@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //my logic thinking the many weapons belongs to one user that is logged in
+      models.weapon.belongsTo(models.userId)
     }
   };
   weapon.init({
