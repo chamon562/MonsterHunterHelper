@@ -4,9 +4,10 @@
   <% if(weapons.length) { %> <% weapons.forEach(w =>{%>
   <ul>
     <a href="/weapon/<%= w.type%>">
-      <h2><%= w.type %></h2>
+      <h2>Weapon Type: <%= w.type %></h2>
       <p><%= w.name %> </p>
-    <%= console.log(w.assets) %> 
+     <img src="<%= w.assets.image %> " alt="">
+    
 
     </a>
   </ul>

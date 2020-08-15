@@ -73,9 +73,10 @@ static associate(models) {
 ## Goal for tomorrow aug 15th 2020
 - Goal is to set up a model associate the user and the weapon, be able to get into the monster hunter api and have favorites on click for the user.
 # TO DO
-- pull from the monster hunter name  from the api
+<!-- - pull from the monster hunter name  from the api -->
 - set up get routes
 <!-- - set up ejs to show on page -->
+
 
 ### aug 15th, 2020 progresss
 

@@ -22,9 +22,9 @@ router.get('/', (req, res)=>{
     axios.get(weaponsUrl)
     .then(function(apiResponse){
         let weapons = apiResponse.data
-        console.log('--------------------')
+        // console.log('--------------------')
         // console.log(weapons)
-        console.log('--------------------')
+        // console.log('--------------------')
         // render from views folder and name of exact ejs file
         res.render('weapons', {weapons})
     })
@@ -34,6 +34,18 @@ router.get('/', (req, res)=>{
     })
 })
 
+router.get('/:id', (req, res)=>{
+    let weaponId = req.params.weaponId
+    console.log(weaponId)
+    let weaponUrl = 'https://mhw-db.com/weapons/idO'
+    console.log(weaponUrl)
+    axios.get(weaponUrl)
+    .then(apiResponse =>{
+    let weapons = apiResponse.data
+    console.log(weapons)
+    res.render('weapons', {weapons})
+    })
+})  
 
 
 module.exports = router
