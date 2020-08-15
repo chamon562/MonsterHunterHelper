@@ -49,3 +49,31 @@ Why : This app can provide guindance for players, and give a faster way to acces
 ----------------------------------------------------------
 
 Make a PR when you're done!
+
+aug 14th, 2020 created a weapon model with name and foreign key
+- sequelize models:create --name weapon --attributes name:string,userId:integer
+- Assocation link done in models folder for user.js
+```js 
+ static associate(models) {
+      // define association here
+      models.user.hasMany(models.weapon)
+    }
+```
+
+- Association link done in models folder for weapon.js
+```js
+static associate(models) {
+      // define association here
+      //my logic thinking the many weapons belongs to one user that is logged in
+      models.weapon.belongsTo(models.userId)
+```
+- sequelize db:migrate to add to my database
+- After making one model for weapons, I will use this to start off for now. 
+- downloaded npm i axios
+## Goal for tomorrow aug 15th 2020
+- Goal is to set up a model associate the user and the weapon, be able to get into the monster hunter api and have favorites on click for the user.
+# TO DO
+- pull from the monster hunter name and weapons from the api
+- set up get routes
+- set up ejs to show on page 
+
