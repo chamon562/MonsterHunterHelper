@@ -4,24 +4,29 @@ const db = require('../models')
 const axios = require('axios')
 
 
-router.get('/', (req, res)=>{
-    db.weapon.findAll()
-    .then(findWeapon =>{
-        res.render('weapons', {findWeapon})
-    })
-    .catch(error =>{
-        console.log('ERROR weapon.js', error)
-    })
-})
+
+// router.get('/', (req, res)=>{
+//     db.weapon.findAll()
+//     .then(findWeapon =>{
+//         res.render('weapons', {findWeapon})
+//     })
+//     .catch(error =>{
+//         console.log('ERROR weapon.js', error)
+//     })
+// })
 
 router.get('/', (req, res)=>{
-    let weaponUrl = 'https://mhw-db.com/weapons'
-    axios.get(weaponUrl)
+    console.log('weapons route')
+   
+    let weaponsUrl = 'https://mhw-db.com/weapons'
+    axios.get(weaponsUrl)
     .then(function(apiResponse){
-        
-        let weapon = apiResponse.data
-        console.log(weapon)
-        res.render('index', {weapon})
+        let weapons = apiResponse.data
+        console.log('--------------------')
+        console.log(weapons)
+        console.log('--------------------')
+        // render from views folder and name of exact ejs file
+        res.render('weapons', {weapons})
     })
     .catch(error =>{
         console.log('error', error)

@@ -2,12 +2,14 @@
 <div id="wep">
   <% if(weapons.length) { %> <% weapons.forEach(w =>{%>
   <ul>
-    <a href="/weapon/<%= w.name%>">
-      <h2><%= w.name %></h2>
+    <a href="/weapon/<%= w.type%>">
+      <h2><%= w.type %></h2>
+      <p><%= w.name %> </p>
     </a>
   </ul>
 
-  <% }) %> <% } else{ %>
+  <% }) %> 
+  <% } else{ %>
   <h2>No weapons shown</h2>
   <% } %>
 </div>
