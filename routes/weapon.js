@@ -14,21 +14,21 @@ router.get('/', (req, res)=>{
     })
 })
 
-// router.get('/:type', (req, res)=>{
-//     let type = req.params.type
-//     let weaponUrl = `https://mhw-db.com/weapons/${type}`
-//     axios.get(weaponUrl)
-//     .then(function(apiResponse){
+router.get('/:type', (req, res)=>{
+    let type = req.params.type
+    let weaponUrl = `https://mhw-db.com/weapons/${type}`
+    axios.get(weaponUrl)
+    .then(function(apiResponse){
         
-//         let weapon = apiResponse.data
-//         console.log(weapon)
-//         res.render('weapons', {weapon})
-//     })
-//     .catch(error =>{
-//         console.log('error', error)
-//         res.render('error')
-//     })
-// })
+        let weapon = apiResponse.data
+        console.log(weapon)
+        res.render('weapons', {weapon})
+    })
+    .catch(error =>{
+        console.log('error', error)
+        res.render('error')
+    })
+})
 
 
 
