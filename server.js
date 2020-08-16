@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const app = express();
+const axios = require('axios')
 // want to set up at the top of the page
 const session = require('express-session')
 const SECRET_SESSION = process.env.SECRET_SESSION
@@ -51,7 +52,24 @@ app.use((req, res, next) => {
   next()
 })
 
-
+app.get('/weapon', (req, res)=>{
+  // console.log('weapons route')
+ 
+  let weaponsUrl = 'https://mhw-db.com/weapons'
+  axios.get(weaponsUrl)
+  .then(function(apiResponse){
+      let weapons = apiResponse.data
+      // console.log('--------------------')
+      // console.log(weapons)
+      // console.log('--------------------')
+      // render from views folder and name of exact ejs file
+      res.render('weapons', {weapons})
+  })
+  .catch(error =>{
+      console.log('error', error)
+      res.render('error')
+  })
+})
 
 app.get('/', (req, res) => {
   console.log(res.locals.alerts)
@@ -60,9 +78,12 @@ app.get('/', (req, res) => {
   res.render('index', { alerts: res.locals.alerts});
 });
 
+
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
+
+
 
 app.use('/auth', require('./routes/auth'));
 app.use('/weapon', require('./routes/weapon'))

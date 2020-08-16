@@ -3,17 +3,13 @@
 <div id="wep">
   <% if(weapons.length) { %> <% weapons.forEach(w =>{%>
   <ul>
-    <a href="/weapon/<%= w.type%>">
-      <h2>Weapon Type: <%= w.type %></h2>
-      <p><%= w.name %> </p>
-     <img src="<%= w.assets.image %> " alt="">
-    
-
+      <p>Weapon Type: <%= w.type %></p>
+    <a href="/weapon/<%= w.name%>">
+      <p><%= w.name %></p>
     </a>
   </ul>
 
-  <% }) %> 
-  <% } else{ %>
+  <% }) %> <% } else{ %>
   <h2>No weapons shown</h2>
   <% } %>
 </div>

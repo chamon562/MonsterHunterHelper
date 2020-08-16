@@ -80,6 +80,10 @@ static associate(models) {
 
 ### aug 15th, 2020 progresss
 
+- Road Block weapons.ejs shows Cannot read property 'image' of null using code:
+```js
+<img src="<%= w.assets.image %> " alt="">
+```
 1. weapons.ejs route shows controller linked in line 68 server.js
 - 
 ```js
