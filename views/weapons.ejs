@@ -1,15 +1,7 @@
 <h1>Weapons page</h1>
 
-<div id="wep">
-  <% if(weapons.length) { %> <% weapons.forEach(w =>{%>
-  <ul>
-      <p>Weapon Type: <%= w.type %></p>
-    <a href="/weapon/<%= w.name%>">
-      <p><%= w.name %></p>
-    </a>
-  </ul>
-
-  <% }) %> <% } else{ %>
-  <h2>No weapons shown</h2>
-  <% } %>
+<div>
+  <h3>Weapon Type: <%= weapons.type %></h3>
+  <h3><%= weapons.name %></h3>
+  <img src="<%= weapons.assets.image %> " alt="" />
 </div>

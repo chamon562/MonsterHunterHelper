@@ -51,25 +51,25 @@ app.use((req, res, next) => {
   // allows to get information from res.loca and runs a fuction 
   next()
 })
-
-app.get('/weapon', (req, res)=>{
-  // console.log('weapons route')
+// shows weapon type and name
+// app.get('/weapon', (req, res)=>{
+//   // console.log('weapons route')
  
-  let weaponsUrl = 'https://mhw-db.com/weapons'
-  axios.get(weaponsUrl)
-  .then(function(apiResponse){
-      let weapons = apiResponse.data
-      // console.log('--------------------')
-      // console.log(weapons)
-      // console.log('--------------------')
-      // render from views folder and name of exact ejs file
-      res.render('weapons', {weapons})
-  })
-  .catch(error =>{
-      console.log('error', error)
-      res.render('error')
-  })
-})
+//   let weaponsUrl = 'https://mhw-db.com/weapons'
+//   axios.get(weaponsUrl)
+//   .then(function(apiResponse){
+//       let weapons = apiResponse.data
+//       // console.log('--------------------')
+//       // console.log(weapons)
+//       // console.log('--------------------')
+//       // render from views folder and name of exact ejs file
+//       res.render('weapons', {weapons})
+//   })
+//   .catch(error =>{
+//       console.log('error', error)
+//       res.render('error')
+//   })
+// })
 
 app.get('/', (req, res) => {
   console.log(res.locals.alerts)

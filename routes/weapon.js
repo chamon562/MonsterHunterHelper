@@ -1,9 +1,23 @@
-const express = require('express')
-const router = express.Router()
-const db = require('../models')
-const axios = require('axios')
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
+const axios = require("axios");
 
-
+router.get("/:id", (req, res) => {
+  let id = req.params.id;
+  console.log(id);
+  let weaponUrl = `https://mhw-db.com/weapons/${id}`;
+  // console.log(weaponUrl)
+  axios.get(weaponUrl)
+    .then(function (apiResponse) {
+      let weapons = apiResponse.data;
+      console.log(weapons);
+      res.render("weapons", {weapons});
+    })
+    .catch((error) => {
+      console.log("ERROR 🦧", error);
+    });
+});
 
 // router.get('/', (req, res)=>{
 //     db.weapon.findAll()
@@ -17,7 +31,7 @@ const axios = require('axios')
 
 // router.get('/', (req, res)=>{
 //     // console.log('weapons route')
-   
+
 //     let weaponsUrl = 'https://mhw-db.com/weapons'
 //     axios.get(weaponsUrl)
 //     .then(function(apiResponse){
@@ -34,18 +48,4 @@ const axios = require('axios')
 //     })
 // })
 
-// router.get('/:name', (req, res)=>{
-//     let name = req.params.name
-//     console.log(name)
-//     let weaponUrl = `https://mhw-db.com/weapons/${name}`
-//     console.log(weaponUrl)
-//     axios.get(weaponUrl)
-//     .then(function(apiResponse) {
-//     let weapons = apiResponse.data
-//     console.log(weapons)
-//     res.render('weapon', {weapons})
-//     })
-// })  
-
-
-module.exports = router
+module.exports = router;
