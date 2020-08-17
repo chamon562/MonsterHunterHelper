@@ -88,6 +88,7 @@ app.get('/home', isLoggedIn , (req,res) =>{
 })
 
 
+  
 app.use('/auth', require('./routes/auth'));
 app.use('/weapon', require('./routes/weapon'))
 app.use('/armor', require('./routes/armor'))

@@ -22,6 +22,29 @@ router.get('/', (req, res)=>{
       res.render('error')
   })
 })
+// had to '/:name" to reference the name being 
+// clicked from weapons.ejs line 7 <a href="/weapon/<%= w.name %>">
+// <p><%= w.name %></p>
+router.get('/:name', (req, res)=>{
+    // let id = req.params.id
+    // console.log('weapons.js req.params.id is: ',id)
+    axios.get(weaponsUrl)
+    .then(function(apiResponse){
+        let weapons = apiResponse.data
+        // console.log(weapons)
+        for(let i = 0; i < weapons.length; i++){
+          let eachWeapon = weapons[i]
+        //   let image = eachWeapon.assets.image
+          console.log(eachWeapon)
+        }
+        res.render('weapons/show', {weapons})
+    })
+    .catch(error =>{
+        console.log('error', error)
+        res.render('error')
+    })
+  
+})
 
 
 // router.get('/', (req, res)=>{

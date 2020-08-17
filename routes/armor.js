@@ -22,6 +22,10 @@ router.get('/', (req, res)=>{
     })
   })
 
+  router.get('/:name', (req, res) =>{
+      res.render('armor/show')
+  })
+
 
 
 

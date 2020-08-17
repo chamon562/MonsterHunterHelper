@@ -156,5 +156,14 @@ app.get('/home', isLoggedIn , (req,res) =>{
   res.render('home')
 })
 ```
+- show.ejs pops up when the user clicks on the weapon, armor, monsters name. ** testing m.name to m.id to see if I can get the same thing.***
 
 ## Aug 17th Road blocker
+- my error code when i used req.params.id in my weapons.js to get more info 
+
+weapons.js req.params.id is:  Buster Sword 1
+error Error: Request failed with status code 404
+
+its good that it shows the the name. 
+but the page doesnt show. so going to change. my href="m.name"
+to href="m.id" in my weapons.ejs
