@@ -87,6 +87,8 @@ app.get('/profile', isLoggedIn, (req, res) => {
 
 app.use('/auth', require('./routes/auth'));
 app.use('/weapon', require('./routes/weapon'))
+app.use('/armor', require('./routes/armor'))
+app.use('/monster', require('./routes/monster'))
 
 
 const port = process.env.PORT || 1337;

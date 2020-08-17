@@ -1,0 +1,16 @@
+<h1>Weapons page</h1>
+
+<div>
+  <% if (weapons) { %> 
+    <% weapons.forEach(w =>{%>
+  <h3>Weapon Type: <%= w.type %></h3>
+  <a href="/weapon/<%= w.name %>">
+    <p><%= w.name %></p>
+    </a>
+  <img src="" alt="" />
+
+  <% }) %> 
+  <% } else { %>
+    <h2>No weapons to show</h2>
+ <% } %>
+</div>

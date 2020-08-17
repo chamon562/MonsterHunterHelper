@@ -1,0 +1,16 @@
+<h1>Armors page</h1>
+
+<div>
+    <% if (armors) { %> 
+      <% armors.forEach(a =>{%>
+    <h3>Armor set: <%= a.rank %></h3>
+    <a href="/armor/<%= a.name %>">
+      <p><%= a.name %></p>
+      </a>
+    <img src="" alt="" />
+  
+    <% }) %> 
+    <% } else { %>
+      <h2>No armors to show</h2>
+   <% } %>
+  </div>
