@@ -56,7 +56,7 @@ router.post('/signup', (req, res)=>{
 //FLASH Message
 // pass in local and check in and so some redirects success redirect fail go back to login
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/home',
   failureRedirect: '/auth/login',
   successFlash: 'Welcome back.',
   failureFlash: 'Either email or password is incorrect. Please try again'

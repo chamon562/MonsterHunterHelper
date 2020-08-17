@@ -144,3 +144,17 @@ div id="wep">
 ### Wish List
 - want a comment section inside each weapon show, armor show, and monster so the community can leave comments on whatever they want to say ie. experience it took to find, or how to find, and where people can ask questions to get answered from the community.
 - want a like mechanic for each comment and be able to post a picutre. 
+
+
+## Aug 17th 2020 Goals
+- Dig into api file tree that has objects after it
+## Aug 17th 2020 Progress 
+- on isLoggedIn user is redirected to home page. server.js line 86
+```js
+// created middleware 10:29am aug 2020
+app.get('/home', isLoggedIn , (req,res) =>{
+  res.render('home')
+})
+```
+
+## Aug 17th Road blocker

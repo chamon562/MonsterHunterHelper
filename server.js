@@ -82,7 +82,10 @@ app.get('/', (req, res) => {
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
-
+// created middleware 10:29am aug 2020
+app.get('/home', isLoggedIn , (req,res) =>{
+  res.render('home')
+})
 
 
 app.use('/auth', require('./routes/auth'));
