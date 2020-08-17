@@ -130,3 +130,17 @@ div id="wep">
   <% } %>
 </div>
 ```
+
+## Aug 16th 2020 progress
+- set up get route for armor and got axios call to dispaly basic info
+- set up get route for monster and got axios call to dispaly basic info
+## Aug 16th 2020 Road Blocc
+- Do not know how to dive in deeper to get more information from the data base. 
+# TODO 
+- want pictures for each weapon.ejs, monsters.ejs, and armors.ejs to display 
+- when clicked on each weapon, monster, and armor to have a show page that displays valuable information about each one. 
+- want web page to show index with info about the web page, then when logged in, it redirects to home page showing href Monster, Weapon, and armor. 
+- create a favorites so when the user clicks on weapon, armor, or monster it will save to their models. 
+### Wish List
+- want a comment section inside each weapon show, armor show, and monster so the community can leave comments on whatever they want to say ie. experience it took to find, or how to find, and where people can ask questions to get answered from the community.
+- want a like mechanic for each comment and be able to post a picutre. 
