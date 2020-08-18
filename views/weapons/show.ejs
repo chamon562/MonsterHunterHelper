@@ -7,14 +7,21 @@
     <img src="<%= weapons.assets.image%>" alt="">
     <li>Rarity: <%= weapons.rarity%></li>
     <li>Attack Damage: <%= weapons.attack.display%> dmg per hit.</li>
-    <% if(weapons.damgType) { %>
-        <li> Damage Type: <%= weapons.damageType%></li>
-
-   <% } else { %>
+    <% if(weapons.damageType) { %>
+        <li>Elder Seal: <%= weapons.elderseal%></li>
+        <li>Damage Type: <%= weapons.damageType%></li>
+        
+   <% } else if(weapons.elements[0]) { %>
+    <li>Elder Seal: <%= weapons.elderseal%></li>
+        <li>Damage Type: <%= weapons.damageType%></li>
         <li>Damage Element Type: <%= weapons.elements[0].type%></li>
         <li>Damge from Element: + <%= weapons.elements[0].damage%> dmg per hit.</li>
         <li>Element hidden: <%= weapons.elements[0].hidden%></li>
-  <% } %>
+  <% } else { %>
+    <li>Damage Element Type: <%= weapons.elements[0].type%></li>
+    <li>Damge from Element: + <%= weapons.elements[0].damage%> dmg per hit.</li>
+    <li>Element hidden: <%= weapons.elements[0].hidden%></li>
+ <% } %>
 </ul>
 
 <div>
@@ -42,9 +49,9 @@
         <li>Carry Limit: <%= weapons.crafting.craftingMaterials[0].item.carryLimit%></li>
         <li>Value: <%= weapons.crafting.craftingMaterials[0].item.value%></li>
         <li>Material Name: <%= weapons.crafting.craftingMaterials[0].item.name%></li>
-        <li>Description: <%= weapons.crafting.craftingMaterials[0].description%></li>
+        <li>Description: <%= weapons.crafting.craftingMaterials[0].item.description%></li>
 
-       <% } else { %>
+       <% } else if(weapons.crafting.upgradeMaterials[0]) { %>
         
         <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
         <li>Id: <%= weapons.crafting.upgradeMaterials[0].item.id%></li>
@@ -53,7 +60,15 @@
         <li>Value: <%= weapons.crafting.upgradeMaterials[0].item.value%></li>
         <li>Material Name: <%= weapons.crafting.upgradeMaterials[0].item.name%></li>
         <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
-        <% } %>
+        <% } else {%>
+            <li>Description: <%= weapons.crafting.upgradeMaterials[1].item.description%></li>
+            <li>Id: <%= weapons.crafting.upgradeMaterials[1].item.id%></li>
+            <li>Rarity: <%= weapons.crafting.upgradeMaterials[1].item.rarity%></li>
+            <li>Carry Limit: <%= weapons.crafting.upgradeMaterials[1].item.carryLimit%></li>
+            <li>Value: <%= weapons.crafting.upgradeMaterials[1].item.value%></li>
+            <li>Material Name: <%= weapons.crafting.upgradeMaterials[1].item.name%></li>
+            <li>Description: <%= weapons.crafting.upgradeMaterials[1].item.description%></li>  
+       <% } %>
 
         
        

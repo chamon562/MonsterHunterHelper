@@ -22,7 +22,7 @@ router.get('/', (req, res)=>{
   .then(function(apiResponse){
       let weapons = apiResponse.data
       // console.log('--------------------')
-      // console.log(weapons)
+      console.log(weapons)
       // console.log('--------------------')
       // render from views folder and name of exact ejs file
       res.render('weapons/weapons', {weapons})
@@ -64,7 +64,7 @@ router.get('/:id', (req, res)=>{
   
 })
 
-router.post('/')
+// router.post('/')
 
 
 

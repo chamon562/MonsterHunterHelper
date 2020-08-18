@@ -173,22 +173,28 @@ its good that it shows the the name.
 but the page doesnt show. so going to change. my href="m.name"
 to href="m.id" in my weapons.ejs
 
-### weapon folder show.ejs save for later
-- api data just grabbed doesnt work for all and only for 1
+### Code Im proud of 
+- originally I was able to get info from the the first obect in the crafting tree. but as the api got in deeper, higher level weapons had info stored in the next object over. I thought I was able to simply type the object before would come undefined so I figured, what if im able to just throw in an if statement saying that if this exist run all this info for the for first object if not then run the next objects info over. 
 ```js 
-<div>
-    <h2>Crafting</h2>
-    <ul>
-        <li>Craftable: <%= weapons.crafting.craftable %></li>
+ <li>Craftable: <%= weapons.crafting.craftable %></li>
+       <% if(weapons.crafting.craftingMaterials[0]){ %>
         <li>Crafting Tree routes: <%= weapons.crafting.branches[0] %></li>
         <p> Crafting Materials</p>
         <li>Id: <%= weapons.crafting.craftingMaterials[0].item.id%></li>
         <li>Rarity: <%= weapons.crafting.craftingMaterials[0].item.rarity%></li>
         <li>Carry Limit: <%= weapons.crafting.craftingMaterials[0].item.carryLimit%></li>
         <li>Value: <%= weapons.crafting.craftingMaterials[0].item.value%></li>
-        <li>Item Name: <%= weapons.crafting.craftingMaterials[0].item.name%></li>
+        <li>Material Name: <%= weapons.crafting.craftingMaterials[0].item.name%></li>
         <li>Description: <%= weapons.crafting.craftingMaterials[0].description%></li>
-       
-    </ul>
-</div>
+
+       <% } else { %>
+        
+        <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
+        <li>Id: <%= weapons.crafting.upgradeMaterials[0].item.id%></li>
+        <li>Rarity: <%= weapons.crafting.upgradeMaterials[0].item.rarity%></li>
+        <li>Carry Limit: <%= weapons.crafting.upgradeMaterials[0].item.carryLimit%></li>
+        <li>Value: <%= weapons.crafting.upgradeMaterials[0].item.value%></li>
+        <li>Material Name: <%= weapons.crafting.upgradeMaterials[0].item.name%></li>
+        <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
+        <% } %>
 ```
