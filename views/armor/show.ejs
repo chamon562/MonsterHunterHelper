@@ -1,6 +1,54 @@
-<!-- <a href="/home">Home Page</a> -->
+<a href="/armor">Back to Armor</a>
+<h1>Armor show page</h1>
+<h2><%= armors.name%></h2>
+<h4>Armor Type: <%= armors.type %></h4>
 
+<div>
+<h4>Male</h4>
+<img src="<%= armors.assets.imageMale %>" alt=""> </h4>
+<h4>Female</h4>
+<img src="<%= armors.assets.imageFemale %>" alt="">
+</div>
 
-<h1>Armor show page. Show armor details</h1>
-<h1>**************************************</h1>
-<h1>To do Have a comment section</h1>
+<div>
+    <h3>Armor slots: <%= armors.slots %></h3>
+    <h3>Armor Skills</h3>
+    <ul>
+        <li>Level: <%= armors.skills[0].level %></li>
+        <li>Skill name: <%= armors.skills[0].skillName %></li>
+        <li>Description: <%= armors.skills[0].description %></li>
+        
+    </ul>
+</div>
+
+<div>
+    <h3>Defense</h3>
+    <ul>
+        <li>Armor base: <%= armors.defense.base %></li>
+        <li>Armor max: <%= armors.defense.max%></li>
+        <li>Augmented: <%= armors.defense.augmented %></li>
+    </ul>
+</div>
+
+<div>
+    <h3>Resistence</h3>
+    <ul>
+        <li>Fire resist: <%= armors.resistances.fire %></li>
+        <li>Water resist: <%= armors.resistances.fire %></li>
+        <li>Ice resist: <%= armors.resistances.fire %></li>
+        <li>Thunder resist: <%= armors.resistances.fire %></li>
+        <li>Dragon resist:  <%= armors.resistances.fire %></li>
+    </ul>
+</div>
+
+<div>
+    <h3>Crafting Materials</h3>
+    <ul>
+        <li>Rarity: <%= armors.crafting.materials[0].item.rarity %></li>
+        <li>Carry limit: <%= armors.crafting.materials[0].item.carryLimit %></li>
+        <li>Value: <%= armors.crafting.materials[0].item.value %></li>
+        <li>Material name: <%= armors.crafting.materials[0].item.name %></li>
+        <li>Material description: <%= armors.crafting.materials[0].item.description %></li>
+    </ul>
+</div>
+

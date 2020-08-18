@@ -198,3 +198,14 @@ to href="m.id" in my weapons.ejs
         <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
         <% } %>
 ```
+
+## Aug 18th 2020 Goals
+- get all information to show up for monsters and armor
+- create add to favorites button
+- create comment section in the weapon armor show.ejs
+
+## Aug 18th 2020 Progress
+
+
+## Aug 18th 2020 Road block
+

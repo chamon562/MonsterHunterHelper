@@ -23,7 +23,8 @@ router.get('/', (req, res)=>{
     })
   })
   
-  router.get('/:name', (req, res)=> { 
+  router.get('/:id', (req, res)=> { 
+   
       res.render('monster/show')
 })
 

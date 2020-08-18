@@ -3,9 +3,9 @@
 <div>
     <% if (armors) { %> 
       <% armors.forEach(a =>{%>
-    <h3>Armor set: <%= a.rank %></h3>
-    <a href="/armor/<%= a.name %>">
-      <p><%= a.name %></p>
+    <h3>Armor rank: <%= a.rank %></h3>
+    <a href="/armor/<%= a.id %>">
+      <p>Armor Name: <%= a.name %></p>
       </a>
     <img src="" alt="" />
   
