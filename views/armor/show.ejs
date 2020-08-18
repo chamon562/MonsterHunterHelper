@@ -14,9 +14,14 @@
     <h3>Armor slots: <%= armors.slots %></h3>
     <h3>Armor Skills</h3>
     <ul>
-        <li>Level: <%= armors.skills[0].level %></li>
-        <li>Skill name: <%= armors.skills[0].skillName %></li>
-        <li>Description: <%= armors.skills[0].description %></li>
+        <% if(armors.skills[0]) {%>
+            <li>Level: <%= armors.skills[0].level %></li>
+            <li>Skill name: <%= armors.skills[0].skillName %></li>
+            <li>Description: <%= armors.skills[0].description %></li>
+
+            <% } else { %>
+                <p>no skills to dispaly</p>
+           <% } %> 
         
     </ul>
 </div>

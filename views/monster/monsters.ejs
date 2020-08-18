@@ -3,7 +3,7 @@
 <div>
     <% if (monsters) { %> 
       <% monsters.forEach(m =>{%>
-   <a href="/monster/<%= m.name %>">
+   <a href="/monster/<%= m.id %>">
       <p><%= m.name %></p>
     </a>
       <h3>Species: <%= m.species %></h3>
