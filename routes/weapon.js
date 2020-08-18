@@ -25,20 +25,28 @@ router.get('/', (req, res)=>{
 // had to '/:name" to reference the name being 
 // clicked from weapons.ejs line 7 <a href="/weapon/<%= w.name %>">
 // <p><%= w.name %></p>
-router.get('/:name', (req, res)=>{
-    // let id = req.params.id
-    // console.log('weapons.js req.params.id is: ',id)
+router.get('/:id', (req, res)=>{
+    let id = req.params.id
+    console.log('weapons.js LINE 30 req.params.id is: ', id)
+    let weaponsUrl = `https://www.mhw-db.com/weapons/${id}`
+    // console.log('WEAPONS.JS LINE 32', weaponsUrl)
+    // let weaponsUrl = 'https://www.mhw-db.com/weapons'
+    console.log('LINE 34 weapons.js ', weaponsUrl)
     axios.get(weaponsUrl)
     .then(function(apiResponse){
         let weapons = apiResponse.data
         // console.log(weapons)
-        for(let i = 0; i < weapons.length; i++){
-          let eachWeapon = weapons[i]
-        //   let image = eachWeapon.assets.image
-          console.log(eachWeapon)
-        }
-        res.render('weapons/show', {weapons})
-    })
+        // console.log('weaponsData weapons.js LINE 36', weaponsData)
+        // console.log(weapons)
+        // for(let i = 0; i < weapons.length; i++){
+        //   let eachWeapon = weapons[i] 
+         //   let image = eachWeapon.assets.image
+        //   console.log('weapon.js line 39 eachWeapon.assets.image',image)
+        // console.log('weapons.js LINE 43', eachWeapon)
+    // }
+    res.render('weapons/show', {weapons})
+    
+})
     .catch(error =>{
         console.log('error', error)
         res.render('error')

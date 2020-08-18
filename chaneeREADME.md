@@ -156,7 +156,12 @@ app.get('/home', isLoggedIn , (req,res) =>{
   res.render('home')
 })
 ```
-- show.ejs pops up when the user clicks on the weapon, armor, monsters name. ** testing m.name to m.id to see if I can get the same thing.***
+- show.ejs pops up when the user clicks on the weapon, armor, monsters name. ** testing m.name to m.id to see if I can get the same thing.*** 
+went from w.name to w.id to get the correct connections on my axios call in my weapons.ejs.
+<a href="/weapon/<%= w.name %>">
+<a href="/weapon/<%= w.id %>">
+made it work for showing the name. now try to get data
+
 
 ## Aug 17th Road blocker
 - my error code when i used req.params.id in my weapons.js to get more info 

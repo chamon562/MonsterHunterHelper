@@ -4,9 +4,10 @@
   <% if (weapons) { %> 
     <% weapons.forEach(w =>{%>
   <h3>Weapon Type: <%= w.type %></h3>
-  <a href="/weapon/<%= w.name %>">
+  <a href="/weapon/<%= w.id %>">
     <p><%= w.name %></p>
     </a>
+    
   <img src="" alt="" />
 
   <% }) %> 

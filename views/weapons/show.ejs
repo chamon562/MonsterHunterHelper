@@ -1,6 +1,9 @@
 <!-- <a href="/home">Home Page</a> -->
 <h1>Weapon show page. Show the details</h1>
 
+<%= weapons.name %> 
+    
+
 <form method="POST" action="/weapon/<%= weapons.name %>">
     <label for="name">Name</label>
     <input name="name" id="name" class="form-control" required><br>
