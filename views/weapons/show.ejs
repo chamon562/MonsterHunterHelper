@@ -1,12 +1,20 @@
-<!-- <a href="/home">Home Page</a> -->
+<a href="/weapon">Go Back to Weapons</a>
 <h1>Weapon show page. Show the details</h1>
 
 <h1><%= weapons.name %> </h1>
+<h3>Weapon Type: <%= weapons.type%></h3>
 <ul>
     <img src="<%= weapons.assets.image%>" alt="">
     <li>Rarity: <%= weapons.rarity%></li>
-    <li>Attack Damage: <%= weapons.attack.display%></li>
-    <li> Damage Type: <%= weapons.damageType%></li>
+    <li>Attack Damage: <%= weapons.attack.display%> dmg per hit.</li>
+    <% if(weapons.damgType) { %>
+        <li> Damage Type: <%= weapons.damageType%></li>
+
+   <% } else { %>
+        <li>Damage Element Type: <%= weapons.elements[0].type%></li>
+        <li>Damge from Element: + <%= weapons.elements[0].damage%> dmg per hit.</li>
+        <li>Element hidden: <%= weapons.elements[0].hidden%></li>
+  <% } %>
 </ul>
 
 <div>
@@ -26,14 +34,28 @@
     <h2>Crafting</h2>
     <ul>
         <li>Craftable: <%= weapons.crafting.craftable %></li>
+       <% if(weapons.crafting.craftingMaterials[0]){ %>
         <li>Crafting Tree routes: <%= weapons.crafting.branches[0] %></li>
         <p> Crafting Materials</p>
         <li>Id: <%= weapons.crafting.craftingMaterials[0].item.id%></li>
         <li>Rarity: <%= weapons.crafting.craftingMaterials[0].item.rarity%></li>
         <li>Carry Limit: <%= weapons.crafting.craftingMaterials[0].item.carryLimit%></li>
         <li>Value: <%= weapons.crafting.craftingMaterials[0].item.value%></li>
-        <li>Item Name: <%= weapons.crafting.craftingMaterials[0].item.name%></li>
+        <li>Material Name: <%= weapons.crafting.craftingMaterials[0].item.name%></li>
         <li>Description: <%= weapons.crafting.craftingMaterials[0].description%></li>
+
+       <% } else { %>
+        
+        <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
+        <li>Id: <%= weapons.crafting.upgradeMaterials[0].item.id%></li>
+        <li>Rarity: <%= weapons.crafting.upgradeMaterials[0].item.rarity%></li>
+        <li>Carry Limit: <%= weapons.crafting.upgradeMaterials[0].item.carryLimit%></li>
+        <li>Value: <%= weapons.crafting.upgradeMaterials[0].item.value%></li>
+        <li>Material Name: <%= weapons.crafting.upgradeMaterials[0].item.name%></li>
+        <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
+        <% } %>
+
+        
        
     </ul>
 </div>

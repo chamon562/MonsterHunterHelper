@@ -172,3 +172,23 @@ error Error: Request failed with status code 404
 its good that it shows the the name. 
 but the page doesnt show. so going to change. my href="m.name"
 to href="m.id" in my weapons.ejs
+
+### weapon folder show.ejs save for later
+- api data just grabbed doesnt work for all and only for 1
+```js 
+<div>
+    <h2>Crafting</h2>
+    <ul>
+        <li>Craftable: <%= weapons.crafting.craftable %></li>
+        <li>Crafting Tree routes: <%= weapons.crafting.branches[0] %></li>
+        <p> Crafting Materials</p>
+        <li>Id: <%= weapons.crafting.craftingMaterials[0].item.id%></li>
+        <li>Rarity: <%= weapons.crafting.craftingMaterials[0].item.rarity%></li>
+        <li>Carry Limit: <%= weapons.crafting.craftingMaterials[0].item.carryLimit%></li>
+        <li>Value: <%= weapons.crafting.craftingMaterials[0].item.value%></li>
+        <li>Item Name: <%= weapons.crafting.craftingMaterials[0].item.name%></li>
+        <li>Description: <%= weapons.crafting.craftingMaterials[0].description%></li>
+       
+    </ul>
+</div>
+```

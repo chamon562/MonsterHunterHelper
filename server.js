@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
 const layouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios')
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
 // middlewear
@@ -111,6 +113,8 @@ app.use('/auth', require('./routes/auth'));
 app.use('/weapon', require('./routes/weapon'))
 app.use('/armor', require('./routes/armor'))
 app.use('/monster', require('./routes/monster'))
+app.use('/favorites', require('./routes/favorites'))
+
 
 
 const port = process.env.PORT || 1337;

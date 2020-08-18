@@ -3,6 +3,16 @@ const router = express.Router();
 const db = require("../models");
 const axios = require("axios");
 
+// router.get('/', (req, res)=>{
+//     db.weapon.findAll()
+//     .then(findWeapon =>{
+//         res.render('weapons/show', {findWeapon})
+//     })
+//     .catch(error =>{
+//         console.log('ERROR weapon.js', error)
+//     })
+// })
+
 // shows weapon type and name
 router.get('/', (req, res)=>{
   // console.log('weapons route')
@@ -54,16 +64,10 @@ router.get('/:id', (req, res)=>{
   
 })
 
+router.post('/')
 
-// router.get('/', (req, res)=>{
-//     db.weapon.findAll()
-//     .then(findWeapon =>{
-//         res.render('weapons', {findWeapon})
-//     })
-//     .catch(error =>{
-//         console.log('ERROR weapon.js', error)
-//     })
-// })
+
+
 
 // router.get('/', (req, res)=>{
 //     // console.log('weapons route')
