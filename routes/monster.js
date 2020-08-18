@@ -24,8 +24,19 @@ router.get('/', (req, res)=>{
   })
   
   router.get('/:id', (req, res)=> { 
-   
-      res.render('monster/show')
+    let id = req.params.id;
+  let armorUrl = `https://mhw-db.com/monsters/${id}`;
+  axios.get(armorUrl)
+    .then(function (apiRepsonse) {
+      let monsters = apiRepsonse.data;
+      console.log(monsters)
+      res.render("monster/show", {monsters});
+    })
+    .catch((error) => {
+      console.log("ERROR LINE 36 monsters.js", error);
+      res.render("error");
+    });
+      
 })
 
 
