@@ -4,21 +4,21 @@ let db = require("../models");
 const weapon = require('../models/weapon')
 const axios = require("axios");
 
-router.get("/:id", (req, res) => {
-  let id = req.params.id;
-  console.log("favorites.js LINE 30 req.params.id is: ", id);
-  let weaponsUrl = `https://www.mhw-db.com/weapons/${id}`;
-  axios.get(weaponsUrl)
-    .then(function (apiResponse) {
-      let weapons = apiResponse.data;
-      console.log(weapons)
-      res.render("weapons/show", { weapons });
-    })
-    .catch((error) => {
-      console.log("error", error);
-      res.render("error");
-    });
-});
+// router.get("/:id", (req, res) => {
+//   let id = req.params.id;
+//   console.log("favorites.js LINE 30 req.params.id is: ", id);
+//   let weaponsUrl = `https://www.mhw-db.com/weapons/${id}`;
+//   axios.get(weaponsUrl)
+//     .then(function (apiResponse) {
+//       let weapons = apiResponse.data;
+//       console.log(weapons)
+//       res.render("weapons/show", { weapons });
+//     })
+//     .catch((error) => {
+//       console.log("error", error);
+//       res.render("error");
+//     });
+// });
 
 router.get('/', (req, res) => {
   db.weapon.findAll()
@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
       console.log("ERROR Line 14 profile.ejs 🐵🙈🙉🙊", error);
     });
 });
+
 
 
 
@@ -50,6 +51,9 @@ router.post("/", (req, res) => {
       res.render("error");
     });
 });
+
+
+
 
 
 module.exports = router;

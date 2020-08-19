@@ -7,7 +7,10 @@
     <a href="/armor/<%= a.id %>">
       <p>Armor Name: <%= a.name %></p>
       </a>
-    <img src="" alt="" />
+      <form method="POST" action="/aFave">
+      <input hidden type="text" name="name" value="<%= a.name %>">
+      <button href="/views/<%= a.name%>" class="btn btn-primary" type="submit">Add to Favorites</button>
+    </form>
   
     <% }) %> 
     <% } else { %>

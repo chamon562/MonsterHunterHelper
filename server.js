@@ -89,31 +89,15 @@ app.get('/home', isLoggedIn , (req,res) =>{
   res.render('home')
 })
 
-// let weaponsUrl = 'https://mhw-db.com/weapons'
-// //   console.log('weapon.js line 30',weaponsUrl)
-//   axios.get(weaponsUrl)
-//   .then(function(apiResponse){
-//       let weapons = apiResponse.data
-      // let weaponsData = weapons.attack.display
-      // console.log(weaponsData)
-//       console.log(weapons)
-//       for(let i = 0; i<weapons.length; i++){
-//         let eachWeapon = weapons[i]
-//         let image = eachWeapon.assets.image
-//         console.log(image)
-//       }
-//       res.render('weapons/show', {weapons})
-//   })
-//   .catch(error =>{
-//       console.log('error', error)
-//       res.render('error')
-//   })
+
 
 app.use('/auth', require('./routes/auth'));
 app.use('/weapon', require('./routes/weapon'))
 app.use('/armor', require('./routes/armor'))
 app.use('/monster', require('./routes/monster'))
 app.use('/favorites', require('./routes/favorites'))
+app.use('/mFave', require('./routes/mFave'))
+app.use('/aFave', require('./routes/aFave'))
 
 
 

@@ -8,6 +8,10 @@
       <p><%= m.name %></p>
     </a>
   
+    <form method="POST" action="/mFave">
+        <input hidden type="text" name="name" value="<%= m.name %>">
+        <button href="/views/<%= m.id%>" class="btn btn-primary" type="submit">Add to Favorites</button>
+      </form>
     <% }) %> 
     <% } else { %>
       <h2>No monsters to show</h2>

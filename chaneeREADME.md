@@ -266,3 +266,34 @@ router.get('/', (req, res)=>{
 
 
 module.exports = router;
+
+
+
+router.get('/', (req, res) => {
+  db.monster.findAll()
+    .then(monsters => {
+      console.log("LINE 10 favorite.js", monsters);
+      res.render("profile", {monsters});
+    })
+    .catch((error) => {
+      console.log("ERROR Line 14 profile.ejs 🐵🙈🙉🙊", error);
+    });
+});
+
+router.post("/", (req, res) => {
+  //db.pokemon is the name of the data table
+  db.monster.findOrCreate({
+      where: {
+        name: req.body.name, 
+        userId: req.user.id
+      }
+    })
+    .then(() => {
+      //redirected to my pokemon page
+      res.redirect("/profile");
+    })
+    .catch((err) => {
+      console.log("favorites.js Line 49 error", err);
+      res.render("error");
+    });
+});
