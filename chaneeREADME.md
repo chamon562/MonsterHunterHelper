@@ -205,7 +205,64 @@ to href="m.id" in my weapons.ejs
 - create comment section in the weapon armor show.ejs
 
 ## Aug 18th 2020 Progress
-
+- got info to dispaly for monsters.ejs and armors.ejs 
 
 ## Aug 18th 2020 Road block
 
+
+# use later
+index.js
+const faveButtons = document.querySelectorAll("button.favorite");
+for (let i = 0; i < faveButtons.length; i++) {
+  faveButtons[i].addEventListener("click", (e) => {
+    const cat = e.target.dataset.cat;
+    const name = e.target.dataset.name;
+    axios.post("/favorites/new", {cat, name} )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  });
+}
+
+weapons.ejs
+<button class="favorite" data-name="<%= w.name %>" data-cat="weapon">Favorite</button>
+
+favorites.js
+
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
+const axios = require("axios");
+
+
+router.get('/', (req, res)=>{
+  db.weapon.findAll()
+})
+
+  // router.post('/new', (req, res) =>{
+  //     const data = req.body
+  //     console.log(data)
+  //   db[data.cat].findOrCreate({
+  //       where: {name: data.name, userId:req.user.id}
+  //   })
+  //   .then(()=>{
+  //       //redirected to my pokemon page 
+  //       res.redirect('/');
+  //     })
+  //     .catch((err) =>{
+  //       console.log('error', err)
+  //       res.send('error')
+    
+  //     })
+  //     console.log(req.user.id)
+    
+  //   //   res.json(data)
+  // })
+
+
+
+
+module.exports = router;

@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
     .then(function (apiResponse) {
       let weapons = apiResponse.data;
       // console.log('--------------------')
-      console.log(weapons);
+      // console.log(weapons);
       // console.log('--------------------')
       // render from views folder and name of exact ejs file
       res.render("weapons/weapons", { weapons });
@@ -38,11 +38,11 @@ router.get("/", (req, res) => {
 // <p><%= w.name %></p>
 router.get("/:id", (req, res) => {
   let id = req.params.id;
-  console.log("weapons.js LINE 30 req.params.id is: ", id);
+  // console.log("weapons.js LINE 30 req.params.id is: ", id);
   let weaponsUrl = `https://www.mhw-db.com/weapons/${id}`;
   // console.log('WEAPONS.JS LINE 32', weaponsUrl)
   // let weaponsUrl = 'https://www.mhw-db.com/weapons'
-  console.log("LINE 34 weapons.js ", weaponsUrl);
+  // console.log("LINE 34 weapons.js ", weaponsUrl);
   axios
     .get(weaponsUrl)
     .then(function (apiResponse) {

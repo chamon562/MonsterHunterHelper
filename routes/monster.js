@@ -12,7 +12,7 @@ router.get('/', (req, res)=>{
     .then(function(apiResponse){
         let monsters = apiResponse.data
         // console.log('--------------------')
-        console.log(monsters)
+        // console.log(monsters)
         // console.log('--------------------')
         // render from views folder and name of exact ejs file
         res.render('monster/monsters', {monsters})
@@ -29,7 +29,7 @@ router.get('/', (req, res)=>{
   axios.get(armorUrl)
     .then(function (apiRepsonse) {
       let monsters = apiRepsonse.data;
-      console.log(monsters)
+      // console.log(monsters)
       res.render("monster/show", {monsters});
     })
     .catch((error) => {

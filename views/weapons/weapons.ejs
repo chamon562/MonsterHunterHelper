@@ -9,8 +9,10 @@
     <p><%= w.name %></p>
     </a>
     
-  <img src="" alt="" />
-<button class="favorite" data-name="<%= w.name %>" data-cat="weapon">Favorite</button>
+    <form method="POST" action="/favorites">
+      <input hidden type="text" name="name" value="<%= w.name %>">
+      <button href="/views/<%= w.id%>" class="btn btn-primary" type="submit">Add to Favorites</button>
+    </form>
 
   <% }) %> 
   <% } else { %>
