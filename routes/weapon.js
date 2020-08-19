@@ -64,6 +64,41 @@ router.get("/:id", (req, res) => {
     });
 });
 
+
+router.get('/:id', (req, res) => {
+  db.weapon.findOne({
+    where: { id: req.params.id },
+    //db.comment added to include to show the comment from the database
+    include: [db.weapon, db.comment],
+  })
+  .then((weapon) => {
+    if (!weapon) throw Error()
+    //to show weapon.author
+    console.log(weapon.user)
+    console.log(weapon.comments)
+    //articles tables is joining tables to itself
+    res.render('weapon/show', { weapon })
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    weaponId: req.params.weaponId
+  })
+  .then((comment) => {
+    res.redirect(`/weapon/${req.params.id}`);
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+})
+
 // router.post('/')
 
 // router.get('/', (req, res)=>{

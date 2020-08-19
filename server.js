@@ -98,6 +98,7 @@ app.use('/monster', require('./routes/monster'))
 app.use('/favorites', require('./routes/favorites'))
 app.use('/mFave', require('./routes/mFave'))
 app.use('/aFave', require('./routes/aFave'))
+app.use('/comment', require('./routes/comment'))
 
 
 

@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class weapon extends Model {
+  class comment extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,17 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      //my logic thinking the many weapons belongs to one user that is logged in
-      models.weapon.belongsTo(models.user)
-      models.weapon.hasMany(models.comment)
+      models.comment.belongsTo(models.weapon)
+      models.comment.belongsTo(models.monster)
+      models.comment.belongsTo(models.armor)
     }
   };
-  weapon.init({
+  comment.init({
     name: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    content: DataTypes.TEXT,
+    weaponId: DataTypes.INTEGER,
+    monsterId: DataTypes.INTEGER,
+    armorId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'weapon',
+    modelName: 'comment',
   });
-  return weapon;
+  return comment;
 };

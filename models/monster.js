@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.monster.belongsTo(models.user)
+      models.monster.hasMany(models.comment)
     }
   };
   monster.init({
