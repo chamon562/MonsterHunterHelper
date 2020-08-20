@@ -369,3 +369,8 @@ this is for profile to show weapons from my models
   <% }) %> 
 
   dont forget isLoggedin for profile.js
+
+  <form method="POST" action="/wepFave/<%= w.id%>?_method=DELETE">
+    <!-- using req.params so no need for input id tag -->
+    <button type="submit">DELETE BUTTON</button>
+  </form>

@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
       }
     })
     .then(() => {
-      res.redirect("/mFave");
+      res.redirect("mFave");
     })
     .catch((err) => {
       console.log("mFave.js Line 34 error", err);

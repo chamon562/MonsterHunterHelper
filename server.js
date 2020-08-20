@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const layouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios')
+const methodOverride = require('method-override')
 // want to set up at the top of the page
 const session = require('express-session')
 const SECRET_SESSION = process.env.SECRET_SESSION
@@ -15,6 +16,7 @@ const flash = require('connect-flash')
 // can pass isLoggedIn our profile rout
 const isLoggedIn = require('./middleware/isLoggedIn')
 
+
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
@@ -22,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+app.use(methodOverride('_method'))
 // middlewear
 // secret: what we actualy giving the client to user to use our site / session cookie
 // resave: save the ession even if its modified, make this false
