@@ -1,19 +1,20 @@
 <h1>Monsters page</h1>
 
 <div>
-    <% if (monsters) { %> 
-      <% monsters.forEach(m =>{%>
-        <h3>Species: <%= m.species %></h3>
-   <a href="/monster/<%= m.id %>">
-      <p><%= m.name %></p>
-    </a>
-  
-    <form method="POST" action="/mFave">
-        <input hidden type="text" name="name" value="<%= m.id %>">
-        <button href="/views/<%= m.id%>" class="btn btn-primary" type="submit">Add to Favorites</button>
-      </form>
-    <% }) %> 
-    <% } else { %>
-      <h2>No monsters to show</h2>
-   <% } %>
-  </div>
+  <% if (monsters) { %> <% monsters.forEach(m =>{%>
+  <h3>Species: <%= m.species %></h3>
+  <a href="/monster/<%= m.id %>">
+    <p><%= m.name %></p>
+  </a>
+
+  <form method="POST" action="/mFave">
+    <input hidden type="text" name="name" value="<%= m.name %>" />
+    <input hidden type="text" name="apiId" value="<%= m.id %>" />
+    <button href="/views/<%= m.name%>" class="btn btn-primary" type="submit">
+      Add to Favorites
+    </button>
+  </form>
+  <% }) %> <% } else { %>
+  <h2>No monsters to show</h2>
+  <% } %>
+</div>

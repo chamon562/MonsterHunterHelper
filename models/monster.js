@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   monster.init({
     name: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    apiId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'monster',

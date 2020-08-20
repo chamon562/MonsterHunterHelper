@@ -1,8 +1,10 @@
-<h1>this is your weapons favorites</h1>
+<h1>Your Favorite Weapons</h1>
 
-<h3>Here is the Weapons you've added</h3>
+<h3>Here is the Weapons you've added Hunter</h3>
+<ul>
   <% weapons.forEach(w =>{ %>
-  <a href="/weapon/<%= w.id %>">
-    <p><%= w.name %></p>
+  <a href="/weapon/<%= w.apiId %>">
+   <li><%= w.name %></li>
   </a>
   <% }) %>
+</ul>

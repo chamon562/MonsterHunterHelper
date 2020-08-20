@@ -1,0 +1,10 @@
+<h1>Your Favorite Monsters</h1>
+
+<h3>Here is the Monsters you've added Hunter</h3>
+<ul>
+  <% monsters.forEach(m =>{ %>
+  <a href="/monster/<%= m.apiId %>">
+   <li><%= m.name %></li>
+  </a>
+  <% }) %>
+</ul>

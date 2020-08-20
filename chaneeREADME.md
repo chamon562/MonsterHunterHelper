@@ -216,6 +216,43 @@ to href="m.id" in my weapons.ejs
 - want to be able to edit and delete the favorite
 ## Aug 19th 2020 progress
 - weapon names now show up, from getting help from TA Seanny. made a route for profile.js and put router.get in and then was able tof do db.weapon.findAll().then(weapons =>{res.render('profile', {weapons})})
+- deleted monFave and put mfave.ejs because it was redirecting wasnt showing monFave so i named it the same as my mFave.js in my routes
+- undo and migrate new model to have api id for weapons to give correct id to render. 
+```js
+// in migrations folder for weapons put in apiId 
+apiId: {
+        type: Sequelize.INTEGER
+      },
+*********************************
+
+// in models folder weapon.js added in apiId
+weapon.init({
+    name: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    apiId: DataTypes.INTEGER
+  },
+*********************************
+// in the console sequelize db:migrate:undo:all
+// in the console sequelize db:migrate to refresh clean database and have apiId added in
+// favorites.js added in apiId: req.body.apiId
+db.weapon.findOrCreate({
+      where: {
+        name: req.body.name,
+        userId: req.user.id,
+        apiId: req.body.apiId,
+      },
+    })
+*********************************
+
+// weapons.ejs line 9 deleted userId and chnaged value to w.id inste4ad of w.apiId
+ <form method="POST" action="/favorites">
+    <input hidden type="text" name="name" value="<%= w.name %>" />
+    <input hidden type="text" name="apiId" value="<%= w.id %>" />
+
+*********************************
+// profile.ejs line 7. changed from w.id to w.apiId
+<a href="/weapon/<%= w.apiId %>">
+```
 ## Aug 19th 2020 roadbloc
 - road blocc progress was able to get the names from weapon models to show up on profile page i changed the method in the form in the weapons.ejs from POST to GET. because the issue was it was skipping the router.get and only running the router.post in the favorites.js
 ```js

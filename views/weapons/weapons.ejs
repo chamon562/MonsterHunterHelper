@@ -2,14 +2,13 @@
 
 <div>
   <% if (weapons) { %> <% weapons.forEach(w =>{%>
-    <a href="/weapon/<%= w.id %>">
-      <p><%= w.name %></p>
-    </a>
+  <a href="/weapon/<%= w.id %>">
+    <p><%= w.name %></p>
+  </a>
 
-    <form method="POST" action="/favorites">
+  <form method="POST" action="/wepFave">
     <input hidden type="text" name="name" value="<%= w.name %>" />
     <input hidden type="text" name="apiId" value="<%= w.id %>" />
-
     <button href="/views/<%= w.name%>" class="btn btn-primary" type="submit">
       Add to Favorites
     </button>

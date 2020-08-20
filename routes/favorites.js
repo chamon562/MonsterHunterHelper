@@ -25,8 +25,7 @@ const axios = require("axios");
 router.post("/", (req, res) => {
   console.log("LINE 26 🐼", req.body);
   //db.pokemon is the name of the data table
-  db.weapon
-    .findOrCreate({
+  db.weapon.findOrCreate({
       where: {
         name: req.body.name,
         userId: req.user.id,

@@ -1,0 +1,10 @@
+<h1>Your Favorite Armors</h1>
+
+<h3>Here is the Armor you've added Hunter</h3>
+<ul>
+  <% armors.forEach(a =>{ %>
+  <a href="/armor/<%= a.apiId %>">
+   <li><%= a.name %></li>
+  </a>
+  <% }) %>
+</ul>

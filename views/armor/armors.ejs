@@ -1,19 +1,20 @@
 <h1>Armors page</h1>
 
 <div>
-    <% if (armors) { %> 
-      <% armors.forEach(a =>{%>
-    <h3>Armor rank: <%= a.rank %></h3>
-    <a href="/armor/<%= a.slug %>">
-      <p>Armor Name: <%= a.name %></p>
-      </a>
-      <form method="POST" action="/aFave">
-      <input hidden type="text" name="name" value="<%= a.name %>">
-      <button href="/views/<%= a.name%>" class="btn btn-primary" type="submit">Add to Favorites</button>
-    </form>
-  
-    <% }) %> 
-    <% } else { %>
-      <h2>No armors to show</h2>
-   <% } %>
-  </div>
+  <% if (armors) { %> <% armors.forEach(a =>{%>
+  <h3>Armor rank: <%= a.rank %></h3>
+  <a href="/armor/<%= a.id %>">
+    <p>Armor Name: <%= a.name %></p>
+  </a>
+  <form method="POST" action="/aFave">
+    <input hidden type="text" name="name" value="<%= a.name %>" />
+    <input hidden type="text" name="apiId" value="<%= a.id %>" />
+    <button href="/views/<%= a.name%>" class="btn btn-primary" type="submit">
+      Add to Favorites
+    </button>
+  </form>
+
+  <% }) %> <% } else { %>
+  <h2>No armors to show</h2>
+  <% } %>
+</div>
