@@ -4,7 +4,7 @@
     <% if (armors) { %> 
       <% armors.forEach(a =>{%>
     <h3>Armor rank: <%= a.rank %></h3>
-    <a href="/armor/<%= a.id %>">
+    <a href="/armor/<%= a.slug %>">
       <p>Armor Name: <%= a.name %></p>
       </a>
       <form method="POST" action="/aFave">

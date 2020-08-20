@@ -1,8 +1,10 @@
 let express = require("express");
 let router = express.Router();
 let db = require("../models");
-const weapon = require('../models/weapon')
+const weapon = require("../models/weapon");
 const axios = require("axios");
+
+// this get route is being skipped why?
 
 // router.get("/:id", (req, res) => {
 //   let id = req.params.id;
@@ -11,7 +13,7 @@ const axios = require("axios");
 //   axios.get(weaponsUrl)
 //     .then(function (apiResponse) {
 //       let weapons = apiResponse.data;
-//       console.log(weapons)
+//       // console.log(weapons)
 //       res.render("weapons/show", { weapons });
 //     })
 //     .catch((error) => {
@@ -20,30 +22,18 @@ const axios = require("axios");
 //     });
 // });
 
-router.get('/', (req, res) => {
-  db.weapon.findAll()
-    .then(weapons => {
-      console.log("LINE 10 favorite.js", weapons);
-      res.render("profile", {weapons});
-    })
-    .catch((error) => {
-      console.log("ERROR Line 14 profile.ejs 🐵🙈🙉🙊", error);
-    });
-});
-
-
-
-
 router.post("/", (req, res) => {
+  console.log("LINE 26 🐼", req.body);
   //db.pokemon is the name of the data table
-  db.weapon.findOrCreate({
+  db.weapon
+    .findOrCreate({
       where: {
-        name: req.body.name, 
-        userId: req.user.id
-      }
+        name: req.body.name,
+        userId: req.user.id,
+        apiId: req.body.apiId,
+      },
     })
     .then(() => {
-      //redirected to my pokemon page
       res.redirect("/profile");
     })
     .catch((err) => {
@@ -51,9 +41,5 @@ router.post("/", (req, res) => {
       res.render("error");
     });
 });
-
-
-
-
 
 module.exports = router;

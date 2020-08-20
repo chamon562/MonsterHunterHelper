@@ -9,7 +9,7 @@
     </a>
   
     <form method="POST" action="/mFave">
-        <input hidden type="text" name="name" value="<%= m.name %>">
+        <input hidden type="text" name="name" value="<%= m.id %>">
         <button href="/views/<%= m.id%>" class="btn btn-primary" type="submit">Add to Favorites</button>
       </form>
     <% }) %> 

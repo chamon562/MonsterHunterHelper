@@ -208,7 +208,32 @@ to href="m.id" in my weapons.ejs
 - got info to dispaly for monsters.ejs and armors.ejs 
 
 ## Aug 18th 2020 Road block
+- cant get my monster name to pop up on the page after i hit favorite 
 
+
+## Aug 19th 2020 Goals
+- get my monsters weapon and armor all showing on profile page when add favorite is clicked
+- want to be able to edit and delete the favorite
+## Aug 19th 2020 progress
+- weapon names now show up, from getting help from TA Seanny. made a route for profile.js and put router.get in and then was able tof do db.weapon.findAll().then(weapons =>{res.render('profile', {weapons})})
+## Aug 19th 2020 roadbloc
+- road blocc progress was able to get the names from weapon models to show up on profile page i changed the method in the form in the weapons.ejs from POST to GET. because the issue was it was skipping the router.get and only running the router.post in the favorites.js
+```js
+<form method="POST" action="/favorites">
+      <input hidden type="text" name="name" value="<%= w.name %>">
+      <button href="/views/<%= w.id%>" class="btn btn-primary" type="submit">Add to Favorites</button>
+    </form>
+```
+Above changed the method to Get and the value in the input to w.name instead of w.id
+```js
+<form method="GET" action="/favorites">
+      <input hidden type="text" name="name" value="<%= w.id %>">
+      <button href="/views/<%= w.id%>" class="btn btn-primary" type="submit">Add to Favorites</button>
+    </form>
+```
+NOW TO CHECC if it still adds to my model when i click add favorites...
+
+Doesnt add weapon to models when clicking add favorites 
 
 # use later
 index.js
@@ -297,3 +322,13 @@ router.post("/", (req, res) => {
       res.render("error");
     });
 });
+
+
+this is for profile to show weapons from my models
+<% Weapons.forEach(function(wFave) { %>
+       <div>
+           <h2><%= wFave %></h2>
+       </div>
+  <% }) %> 
+
+  dont forget isLoggedin for profile.js

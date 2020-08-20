@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   weapon.init({
     name: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    apiId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'weapon',

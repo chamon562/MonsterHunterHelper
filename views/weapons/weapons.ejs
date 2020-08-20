@@ -1,22 +1,21 @@
-
 <h1>Weapons page</h1>
 
 <div>
-  <% if (weapons) { %> 
-    <% weapons.forEach(w =>{%>
-  <h3>Weapon Type: <%= w.type %></h3>
-  <a href="/weapon/<%= w.id %>">
-    <p><%= w.name %></p>
+  <% if (weapons) { %> <% weapons.forEach(w =>{%>
+    <a href="/weapon/<%= w.id %>">
+      <p><%= w.name %></p>
     </a>
-    
+
     <form method="POST" action="/favorites">
-      <input hidden type="text" name="name" value="<%= w.name %>">
-      <button href="/views/<%= w.id%>" class="btn btn-primary" type="submit">Add to Favorites</button>
-    </form>
+    <input hidden type="text" name="name" value="<%= w.name %>" />
+    <input hidden type="text" name="apiId" value="<%= w.id %>" />
 
-  <% }) %> 
-  <% } else { %>
-    <h2>No weapons to show</h2>
- <% } %>
+    <button href="/views/<%= w.name%>" class="btn btn-primary" type="submit">
+      Add to Favorites
+    </button>
+  </form>
+
+  <% }) %> <% } else { %>
+  <h2>No weapons to show</h2>
+  <% } %>
 </div>
-

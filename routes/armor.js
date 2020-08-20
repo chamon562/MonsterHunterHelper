@@ -23,9 +23,9 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
-  let id = req.params.id;
-  let armorUrl = `https://mhw-db.com/armor/${id}`;
+router.get("/:slug", (req, res) => {
+  let slug = req.params.slug;
+  let armorUrl = `https://mhw-db.com/armor/${slug}`;
   axios
     .get(armorUrl)
     .then(function (apiRepsonse) {

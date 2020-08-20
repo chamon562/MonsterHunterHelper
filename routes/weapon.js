@@ -5,8 +5,9 @@ const axios = require("axios");
 
 // router.get('/', (req, res)=>{
 //     db.weapon.findAll()
-//     .then(findWeapon =>{
-//         res.render('weapons/show', {findWeapon})
+//     .then(weapons =>{
+//       console.log('*** weapon.js LINE 9 ***',weapons)
+//         res.render('weapons/weapons', {weapons})
 //     })
 //     .catch(error =>{
 //         console.log('ERROR weapon.js', error)
@@ -18,12 +19,11 @@ router.get("/", (req, res) => {
   // console.log('weapons route')
 
   let weaponsUrl = "https://mhw-db.com/weapons";
-  axios
-    .get(weaponsUrl)
+  axios.get(weaponsUrl)
     .then(function (apiResponse) {
       let weapons = apiResponse.data;
       // console.log('--------------------')
-      console.log(weapons);
+      // console.log(weapons);
       // console.log('--------------------')
       // render from views folder and name of exact ejs file
       res.render("weapons/weapons", { weapons });
@@ -43,8 +43,7 @@ router.get("/:id", (req, res) => {
   // console.log('WEAPONS.JS LINE 32', weaponsUrl)
   // let weaponsUrl = 'https://www.mhw-db.com/weapons'
   // console.log("LINE 34 weapons.js ", weaponsUrl);
-  axios
-    .get(weaponsUrl)
+  axios.get(weaponsUrl)
     .then(function (apiResponse) {
       let weapons = apiResponse.data;
       // console.log(weapons)
@@ -64,40 +63,57 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// router.post("/", (req, res) => {
+//   //db.pokemon is the name of the data table
+//   db.weapon.findOrCreate({
+//       where: {
+//         name: req.body.name,
+//         userId: req.user.id
+//       }
+//     })
+//     .then(() => {
+//       //redirected to my pokemon page
+//       res.redirect("/profile");
+//     })
+//     .catch((err) => {
+//       console.log("favorites.js Line 49 error", err);
+//       res.render("error");
+//     });
+// });
 
-router.get('/:id', (req, res) => {
-  db.weapon.findOne({
-    where: { id: req.params.id },
-    //db.comment added to include to show the comment from the database
-    include: [db.weapon, db.comment],
-  })
-  .then((weapon) => {
-    if (!weapon) throw Error()
-    //to show weapon.author
-    console.log(weapon.user)
-    console.log(weapon.comments)
-    //articles tables is joining tables to itself
-    res.render('weapon/show', { weapon })
-  })
-  .catch((error) => {
-    console.log(error)
-    res.status(400).render('main/404')
-  })
-})
+// router.get('/:id', (req, res) => {
+//   db.weapon.findOne({
+//     where: { id: req.params.id },
+//     //db.comment added to include to show the comment from the database
+//     include: [db.weapon, db.comment],
+//   })
+//   .then((weapon) => {
+//     if (!weapon) throw Error()
+//     //to show weapon.author
+//     console.log(weapon.user)
+//     console.log(weapon.comments)
+//     //articles tables is joining tables to itself
+//     res.render('weapon/show', { weapon })
+//   })
+//   .catch((error) => {
+//     console.log(error)
+//     res.status(400).render('main/404')
+//   })
+// })
 
-router.post('/:id', (req, res) => {
-  db.comment.create({
-    name: req.body.name,
-    content: req.body.content,
-    weaponId: req.params.weaponId
-  })
-  .then((comment) => {
-    res.redirect(`/weapon/${req.params.id}`);
-  })
-  .catch((error) => {
-    res.status(400).render('main/404')
-  })
-})
+// router.post('/:id', (req, res) => {
+//   db.comment.create({
+//     name: req.body.name,
+//     content: req.body.content,
+//     weaponId: req.params.weaponId
+//   })
+//   .then((comment) => {
+//     res.redirect(`/weapon/${req.params.id}`);
+//   })
+//   .catch((error) => {
+//     res.status(400).render('main/404')
+//   })
+// })
 
 // router.post('/')
 

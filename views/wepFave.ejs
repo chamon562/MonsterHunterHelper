@@ -1,0 +1,8 @@
+<h1>this is your weapons favorites</h1>
+
+<h3>Here is the Weapons you've added</h3>
+  <% weapons.forEach(w =>{ %>
+  <a href="/weapon/<%= w.id %>">
+    <p><%= w.name %></p>
+  </a>
+  <% }) %>

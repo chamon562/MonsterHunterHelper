@@ -79,17 +79,10 @@ app.get('/', (req, res) => {
   // if we need to send information to another page we send as an object {alert: req.flash()}
   res.render('index', { alerts: res.locals.alerts});
 });
-
-
-app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
-});
 // created middleware 10:29am aug 2020
 app.get('/home', isLoggedIn , (req,res) =>{
   res.render('home')
 })
-
-
 
 app.use('/auth', require('./routes/auth'));
 app.use('/weapon', require('./routes/weapon'))
@@ -99,6 +92,7 @@ app.use('/favorites', require('./routes/favorites'))
 app.use('/mFave', require('./routes/mFave'))
 app.use('/aFave', require('./routes/aFave'))
 app.use('/comment', require('./routes/comment'))
+app.use('/profile', require('./routes/profile'))
 
 
 
