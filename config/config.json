@@ -13,6 +13,6 @@
     "database": "express_auth_ap_production",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "use_env_variable": "postgres://ltytaynmjnypmn:a7aeca7b157c1bfc340b9ade7bfc158599043ff5a8ea18a4078cdfa05e0d6dc3@ec2-52-22-94-132.compute-1.amazonaws.com:5432/dedabv0qcnnfur"
+    "use_env_variable": "DATABASE_URL"
   }
 }
