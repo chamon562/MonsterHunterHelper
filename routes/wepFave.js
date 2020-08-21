@@ -34,47 +34,40 @@ router.post("/", (req, res) => {
       res.render("error");
     });
 });
-
+// :id to reference the model id when doing a put route to change to another
+// takes in two objects the first is what i wanna change which is the name
+// the second is what do i wanna change which is where the id req.params.id
 router.put("/:id", (req, res) => {
   db.weapon.update(
+    //start with what I want to change within the model which is name
       {name: req.body.name},
-      {where: {id: req.params.id}
-    })
+    //where? the id object {id: req.params.id }
+      {where: {id: req.params.id}}
+    )
     .then(() => {
-    res.redirect("/wepFave")
+      res.redirect("/wepFave");
     })
     .catch((error) => {
       console.log("wepFave.js Line 47 error", error);
-      res.render("error")
-    })
+      res.render("error");
+    });
 });
 
-router.delete('/:id', (req, res)=>{
-    db.weapon.destory({
-      //still have access this params in l.then
+router.delete("/:id", (req, res) => {
+  db.weapon.destroy({
+      //still have access this params in .then
       where: {id: req.params.id}
     })
     //delete the project but not the category
-    .then(() =>{
-      res.redirect('/wepFave')
-    }).catch((error)=>{
-    console.log("wepFave.js Line 65 error", error)
-     res.render('error', error)
+    .then(() => {
+      res.redirect("/wepFave");
     })
-  })
+    .catch((error) => {
+      console.log("wepFave.js Line 66 error 🐯", error);
+      res.render("error", error);
+    });
+});
 
-// router.put db.model.update req.body where all the keys of the kcolumsn name apiId userId
-// use method override
-
-// router.get('/edit', async(req, res)=>{
-//     try {
-//         const wepFave = await weapon.findById(req.params.id)
-//         res.render('wepFave.js', {wepFave: wepFave})
-
-//     } catch {
-//         res.redirect('/wepfFave')
-//     }
-// })
 
 
 module.exports = router;

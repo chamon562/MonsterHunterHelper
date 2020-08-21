@@ -4,7 +4,16 @@
 <ul>
   <% monsters.forEach(m =>{ %>
   <a href="/monster/<%= m.apiId %>">
-   <li><%= m.name %></li>
+    <h3><li><%= m.name %></li></h3>
   </a>
+  <form method="POST" action="/mfave/<%= m.apiId %>/?_method=PUT ">
+    <label>Rename:</label>
+    <input type="text" name="name" value="<%= m.name %> " />
+    <button type="submit">Edit/Update</button>
+  </form>
+
+  <form method="Post" action="/mFave/<%= m.id %>/?_method=DELETE">
+    <button type="submit">Delete</button>
+  </form>
   <% }) %>
 </ul>

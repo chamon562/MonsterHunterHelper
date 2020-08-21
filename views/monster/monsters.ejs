@@ -2,10 +2,10 @@
 
 <div>
   <% if (monsters) { %> <% monsters.forEach(m =>{%>
-  <h3>Species: <%= m.species %></h3>
   <a href="/monster/<%= m.id %>">
-    <p><%= m.name %></p>
+    <h3><%= m.name %></h3>
   </a>
+  <p>Species: <%= m.species %></p>
 
   <form method="POST" action="/mFave">
     <input hidden type="text" name="name" value="<%= m.name %>" />
