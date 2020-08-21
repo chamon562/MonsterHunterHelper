@@ -2,10 +2,9 @@
 
 <div>
   <% if (armors) { %> <% armors.forEach(a =>{%>
-  <h3>Armor rank: <%= a.rank %></h3>
-  <a href="/armor/<%= a.id %>">
-    <p>Armor Name: <%= a.name %></p>
-  </a>
+  <h3><a href="/armor/<%= a.id %>"> <%= a.name %> </a></h3>
+    <p>Armor rank: <%= a.rank %></p>
+  
   <form method="POST" action="/aFave">
     <input hidden type="text" name="name" value="<%= a.name %>" />
     <input hidden type="text" name="apiId" value="<%= a.id %>" />

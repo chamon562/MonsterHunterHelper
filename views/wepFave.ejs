@@ -6,7 +6,7 @@
   <% weapons.forEach(w =>{ %>
   <a href="/weapon/<%= w.apiId %>"><li><%= w.name %></li></a>
     
-  <form method="POST" action="/wepFave/<%= w.apiId%>/?_method=PUT">
+  <form method="POST" action="/wepFave/<%= w.id%>/?_method=PUT">
     <label>Rename: </label>
     <input type="text" name="name" value="<%= w.name%>" />
     <button type="submit">Edit/Update</button>

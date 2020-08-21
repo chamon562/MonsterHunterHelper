@@ -6,7 +6,7 @@
   <a href="/monster/<%= m.apiId %>">
     <h3><li><%= m.name %></li></h3>
   </a>
-  <form method="POST" action="/mfave/<%= m.apiId %>/?_method=PUT ">
+  <form method="POST" action="/mfave/<%= m.id %>/?_method=PUT ">
     <label>Rename:</label>
     <input type="text" name="name" value="<%= m.name %> " />
     <button type="submit">Edit/Update</button>

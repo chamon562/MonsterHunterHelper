@@ -4,7 +4,17 @@
 <ul>
   <% armors.forEach(a =>{ %>
   <a href="/armor/<%= a.apiId %>">
-   <li><%= a.name %></li>
+   <h3><li><%= a.name %></li></h3>
   </a>
+  <form method="POST" action="/afave/<%= a.id %>/?_method=PUT ">
+    <label>Rename:</label>
+    <input type="text" name="name" value="<%= a.name %> " />
+    <button type="submit">Edit/Update</button>
+  </form>
+
+  <form method="POST" action="/aFave/<%= a.id%>?_method=DELETE">
+    <!-- using req.params so no need for input id tag -->
+    <button type="submit">Delete</button>
+  </form>
   <% }) %>
 </ul>

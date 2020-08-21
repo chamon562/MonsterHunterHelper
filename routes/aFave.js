@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
     })
     .catch((error) => {
       console.log("ERROR Line 14 aFave.js 🐵🙈🙉🙊", error);
+      res.render("error")
     });
 });
 
@@ -28,10 +29,35 @@ router.post("/", (req, res) => {
       //redirected to my pokemon page
       res.redirect("aFave");
     })
-    .catch((err) => {
-      console.log("aFave.js Line 31 error", err);
+    .catch((error) => {
+      console.log("aFave.js Line 31 error", error);
       res.render("error");
     });
 });
 
+router.put("/:id", (req, res) =>{
+    db.armor.update({name: req.body.name}, {where: {id: req.params.id}})
+    .then(()=>{
+        res.redirect('/aFave')
+    })
+    .catch(error =>{
+        console.log("aFave.js Line 43 error 🐯", error)
+        res.render("error")
+    })
+})
+
+router.delete("/:id", (req, res) => {
+    db.armor.destroy({
+        //still have access this params in .then
+        where: {id: req.params.id}
+      })
+      //delete the project but not the category
+      .then(() => {
+        res.redirect("/aFave");
+      })
+      .catch((error) => {
+        console.log("wepFave.js Line 66 error 🐯", error);
+        res.render("error", error);
+      });
+  });
 module.exports = router;
