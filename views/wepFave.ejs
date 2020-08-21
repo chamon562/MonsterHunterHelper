@@ -1,11 +1,16 @@
+
 <h1>Your Favorite Weapons</h1>
 
 <h3>Here is the Weapons you've added Hunter</h3>
 <ul>
   <% weapons.forEach(w =>{ %>
   <a href="/weapon/<%= w.apiId %>"><li><%= w.name %></li></a>
-  <a href="/weapon/<%= w.apiId %>/edit">Edit</a>
- 
+
+  <form method="POST" action="/wepFave/<%= w.apiId%>/?_method=PUT">
+    <label>Rename: </label>
+    <input type="text" name="name" value="<%= w.name%>" />
+    <button type="submit">Edit/Update</button>
+  </form>
   <form method="POST" action="/wepFave/<%= w.id%>?_method=DELETE">
     <!-- using req.params so no need for input id tag -->
     <button type="submit">Delete</button>

@@ -3,7 +3,7 @@
 <div>
   <% if (weapons) { %> <% weapons.forEach(w =>{%>
   <a href="/weapon/<%= w.id %>">
-    <p><%= w.name %></p>
+    <h2><%= w.name %></h2>
   </a>
 
   <form method="POST" action="/wepFave">

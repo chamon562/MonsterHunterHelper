@@ -1,11 +1,17 @@
+#body{
+  background-color: rgba(0, 0, 0, 0.906);
+  color: brown;
+}
 nav ul li {
   text-decoration: none;
   display: inline-block;
   margin-right: .3em;
 }
 
-h1 {
-  color: rgb(4, 79, 102);
-}
+#home{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 100px;
 
+}
 /* grab bootstrap alert success make sure to install */

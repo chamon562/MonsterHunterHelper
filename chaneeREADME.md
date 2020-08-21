@@ -374,3 +374,13 @@ this is for profile to show weapons from my models
     <!-- using req.params so no need for input id tag -->
     <button type="submit">DELETE BUTTON</button>
   </form>
+
+  <form method="POST" action="/wepFave/<%= w.apiId%>/?_method=PUT">
+    <label>Rename: </label>
+    <input type="text" name="name" value="<%= w.name%>" />
+    <button type="submit">Edit/Update</button>
+  </form>
+  <form method="POST" action="/wepFave/<%= w.id%>?_method=DELETE">
+    <!-- using req.params so no need for input id tag -->
+    <button type="submit">Delete</button>
+  </form>

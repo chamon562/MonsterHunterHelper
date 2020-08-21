@@ -9,13 +9,21 @@
 
     <h3>Description</h3>
     <p><%= monsters.description %></p>
-
+    <h3>Warning Moves</h3>
+    <% if(monsters.ailments[0]) { %>
+      <p>Be aware of:  <%= monsters.ailments[0].name %></p> 
+      <p><%= monsters.ailments[0].description %></p> 
+      <p>To cure this status use: <%= monsters.ailments[0].recovery.items[0].name %></p>
+      <p> <%= monsters.ailments[0].recovery.items[0].description%></p>
+  <%  } else { %>
+    <p>Your in luck! This Monster has no moves to worry about</p>
+  <% } %> 
     <h3>Location Found</h3>
     <p><%= monsters.locations[0].name %></p>
 
     <h3>Resistances</h3>
     <% if(monsters.resistances[0]) { %>
-        <%= monsters.resistances[0]%>
+        <%= monsters.resistances[0].element%>
    <% } else { %>
     <p>This Monster has no resistances</p>
    <% } %>
