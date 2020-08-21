@@ -253,8 +253,10 @@ db.weapon.findOrCreate({
 // profile.ejs line 7. changed from w.id to w.apiId
 <a href="/weapon/<%= w.apiId %>">
 ```
+
 ## Aug 19th 2020 roadbloc
 - road blocc progress was able to get the names from weapon models to show up on profile page i changed the method in the form in the weapons.ejs from POST to GET. because the issue was it was skipping the router.get and only running the router.post in the favorites.js
+
 ```js
 <form method="POST" action="/favorites">
       <input hidden type="text" name="name" value="<%= w.name %>">
@@ -271,116 +273,66 @@ Above changed the method to Get and the value in the input to w.name instead of 
 NOW TO CHECC if it still adds to my model when i click add favorites...
 
 Doesnt add weapon to models when clicking add favorites 
+## Aug 20th 2020 Goal
+  - have a comment section in my weapon,armor, and monster detail page
+  - have the user customize their profile 
 
-# use later
-index.js
-const faveButtons = document.querySelectorAll("button.favorite");
-for (let i = 0; i < faveButtons.length; i++) {
-  faveButtons[i].addEventListener("click", (e) => {
-    const cat = e.target.dataset.cat;
-    const name = e.target.dataset.name;
-    axios.post("/favorites/new", {cat, name} )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  });
-}
-
-weapons.ejs
-<button class="favorite" data-name="<%= w.name %>" data-cat="weapon">Favorite</button>
-
-favorites.js
-
-const express = require("express");
-const router = express.Router();
-const db = require("../models");
-const axios = require("axios");
-
-
-router.get('/', (req, res)=>{
-  db.weapon.findAll()
-})
-
-  // router.post('/new', (req, res) =>{
-  //     const data = req.body
-  //     console.log(data)
-  //   db[data.cat].findOrCreate({
-  //       where: {name: data.name, userId:req.user.id}
-  //   })
-  //   .then(()=>{
-  //       //redirected to my pokemon page 
-  //       res.redirect('/');
-  //     })
-  //     .catch((err) =>{
-  //       console.log('error', err)
-  //       res.send('error')
-    
-  //     })
-  //     console.log(req.user.id)
-    
-  //   //   res.json(data)
-  // })
-
-
-
-
-module.exports = router;
-
-
-
-router.get('/', (req, res) => {
-  db.monster.findAll()
-    .then(monsters => {
-      console.log("LINE 10 favorite.js", monsters);
-      res.render("profile", {monsters});
+## Progress Aug 20th 2020
+- Was able to properly display edit/update with router.put. Had issue for a long time, because I didnt reference :id, and I only told what I was changing which was where, but never specified what. So Instructor Sarah <3 helped remind me that it takes two objects. 
+```js
+router.put("/:id", (req, res) => {
+  db.weapon.update(
+    //start with what I want to change within the model which is name
+      {name: req.body.name},
+    //where? the id object {id: req.params.id }
+      {where: {id: req.params.id}}
+    )
+    .then(() => {
+      res.redirect("/wepFave");
     })
     .catch((error) => {
-      console.log("ERROR Line 14 profile.ejs 🐵🙈🙉🙊", error);
-    });
-});
-
-router.post("/", (req, res) => {
-  //db.pokemon is the name of the data table
-  db.monster.findOrCreate({
-      where: {
-        name: req.body.name, 
-        userId: req.user.id
-      }
-    })
-    .then(() => {
-      //redirected to my pokemon page
-      res.redirect("/profile");
-    })
-    .catch((err) => {
-      console.log("favorites.js Line 49 error", err);
+      console.log("wepFave.js Line 47 error", error);
       res.render("error");
     });
 });
 
+```
+- Made a fix to my delete route to all models.
 
-this is for profile to show weapons from my models
-<% Weapons.forEach(function(wFave) { %>
-       <div>
-           <h2><%= wFave %></h2>
-       </div>
-  <% }) %> 
+- Fixed issue where only the first name in the models able to edit.
+```js
 
-  dont forget isLoggedin for profile.js
+// all names were able to be edited  because of changing .apiId to .id for fix
 
-  <form method="POST" action="/wepFave/<%= w.id%>?_method=DELETE">
-    <!-- using req.params so no need for input id tag -->
-    <button type="submit">DELETE BUTTON</button>
-  </form>
-
-  <form method="POST" action="/wepFave/<%= w.apiId%>/?_method=PUT">
-    <label>Rename: </label>
-    <input type="text" name="name" value="<%= w.name%>" />
+// from only first name in model change
+<form method="POST" action="/afave/<%= a.apiId %>/?_method=PUT ">
+    <label>Rename:</label>
+    <input type="text" name="name" value="<%= a.name %> " />
     <button type="submit">Edit/Update</button>
   </form>
-  <form method="POST" action="/wepFave/<%= w.id%>?_method=DELETE">
-    <!-- using req.params so no need for input id tag -->
-    <button type="submit">Delete</button>
+//   to fix version all name
+<form method="POST" action="/afave/<%= a.id %>/?_method=PUT ">
+    <label>Rename:</label>
+    <input type="text" name="name" value="<%= a.name %> " />
+    <button type="submit">Edit/Update</button>
   </form>
+  ```
+## Aug 20st 2020 Road Blocc
+- creating a comment section and getting error in show.ejs:80, says Cannot read property 'forEach' of undefined
+```js
+<% weapons.comment.forEach(comment => { %>
+    <div class="well">
+      <p>
+        <%= comment.name %> 
+        <%= comment.content %>
+      </p>
+    </div>
+    <% }) %>
+```
+
+
+  ## Aug 21st 2020 Goal
+  - have a comment section in my weapon,armor, and monster detail page
+  - have the user customize their profile 
+  ## Aug 21st 2020 Progress
+  ## Aug 21st 2020 Road Blocc

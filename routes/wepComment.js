@@ -10,7 +10,7 @@ router.post('/', (req, res)=>{
     let comment = req.body.comment
     console.log(comment)
     // req.body is just an object
-    // get article id too because in the form in show.ejs
+    // get user id too because in the form in show.ejs
     let userId = req.body.userId
     //you can pass in req.body 
     db.comment.create({
@@ -20,6 +20,7 @@ router.post('/', (req, res)=>{
     })
     // get back a comment
     .then(comment =>{
+        console.log("wepComment.js Line 23 🐝", comment)
         res.redirect(`/weapon/${userId}`)
     })
     .catch(error=>{
