@@ -5,7 +5,9 @@ const armor = require("../models/weapon");
 const axios = require("axios");
 
 router.get("/", (req, res) => {
-  db.armor.findAll()
+  db.armor.findAll({
+    where: {userId: req.user.id}
+  })
     .then((armors) => {
       console.log("LINE 10 favorite.js", armors);
       res.render("aFave", { armors });

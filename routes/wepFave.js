@@ -6,7 +6,9 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/", (req, res) => {
   db.weapon
-    .findAll()
+    .findAll({
+      where: {userId: req.user.id}
+    })
     .then((weapons) => {
       console.log("profile.js THESE ARE weaponS LINE 8", weapons);
       res.render("wepFave", { weapons });

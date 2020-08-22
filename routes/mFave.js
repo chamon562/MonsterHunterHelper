@@ -6,7 +6,9 @@ const axios = require("axios");
 
 router.get("/", (req, res) => {
   db.monster
-    .findAll()
+    .findAll({
+      where: {userId: req.user.id}
+    })
     .then((monsters) => {
       console.log("LINE 11 mFave.js", monsters);
       res.render("mFave", { monsters });
