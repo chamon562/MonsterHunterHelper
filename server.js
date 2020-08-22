@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const layouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios')
+const cloudinary = require('cloudinary')
 const methodOverride = require('method-override')
+
+
 // want to set up at the top of the page
 const session = require('express-session')
 const SECRET_SESSION = process.env.SECRET_SESSION
@@ -17,7 +20,9 @@ const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 
 
+
 app.set('view engine', 'ejs');
+cloudinary.config(process.env.CLOUDINARY_URL)
 
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));

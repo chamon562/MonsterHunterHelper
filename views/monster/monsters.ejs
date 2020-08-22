@@ -1,9 +1,9 @@
-<h1>Monsters page</h1>
+<h1 style="text-align: center;"><img src="https://fontmeme.com/permalink/200822/8c43cdf86dc32acf24e13302834069a8.png" alt="monsters-attack-empire-of-the-claw-font"></h1>
 
 <div>
   <% if (monsters) { %> <% monsters.forEach(m =>{%>
   <a href="/monster/<%= m.id %>">
-    <h3><%= m.name %></h3>
+    <h2><%= m.name %></h2>
   </a>
   <p>Species: <%= m.species %></p>
 

@@ -449,3 +449,23 @@ router.get("/:id", (req, res) => {
     </div>
     <% }) %>
 ```
+
+
+<% if (myPics.length) { %>
+    <div class="picBox">
+        <% myPics.forEach(p =>{%>
+            <div>
+                <img src="<%= p.url%>" alt="picture">
+            </div>
+       <% })%>
+    </div>
+<%} else {%>
+    <h2>sorry i dont have pic</h2>
+<% }%>
+<!-- when were uploading files we need to specify in form -->
+<!-- enctype="multipart/form-data" -->
+<form enctype="multipart/form-data" method="POST" action="/">
+  <input type="file" name="myFile" />
+  <!-- to sbumit we need something -->
+  <input type="submit" class="btn btn-primary" />
+</form>

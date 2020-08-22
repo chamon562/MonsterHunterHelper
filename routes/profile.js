@@ -18,7 +18,7 @@ router.get('/', (req, res) =>{
 router.get('/new', (req, res) =>{
     db.monster.findAll()
     .then(monsters =>{
-        // console.log('profile.js LINE 21 THESE ARE MONSTERS ',monsters)
+        console.log('profile.js LINE 21 THESE ARE MONSTERS ',monsters)
         res.render('profile', {monsters})
     })
     .catch((error) => {

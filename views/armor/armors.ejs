@@ -1,8 +1,8 @@
-<h1>Armors page</h1>
+<h1 style="text-align: center;"><img src="https://fontmeme.com/permalink/200822/3a198f8048f410f6bd0bcc0d2558241d.png" alt="monsters-attack-empire-of-the-claw-font"></h1>
 
 <div>
   <% if (armors) { %> <% armors.forEach(a =>{%>
-  <h3><a href="/armor/<%= a.id %>"> <%= a.name %> </a></h3>
+  <h2><a href="/armor/<%= a.id %>"> <%= a.name %> </a></h2>
     <p>Armor rank: <%= a.rank %></p>
   
   <form method="POST" action="/aFave">
