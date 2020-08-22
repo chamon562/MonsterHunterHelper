@@ -4,8 +4,11 @@ const bodyParser = require('body-parser');
 const layouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios')
+const multer = require('multer')
+const upload = multer({ dest: './uploads'})
 const cloudinary = require('cloudinary')
 const methodOverride = require('method-override')
+
 
 
 // want to set up at the top of the page

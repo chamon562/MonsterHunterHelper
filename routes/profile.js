@@ -1,31 +1,44 @@
 let express = require("express");
 let router = express.Router();
 let db = require("../models");
+const multer = require('multer')
+//multer requires a destination and take an object
+const upload = multer({ dest: './uploads'})
+const cloudinary = require('cloudinary')
 
-router.get('/', (req, res) =>{
-    db.weapon.findAll()
-    .then(weapons =>{
-        // console.log('profile.js THESE ARE weaponS LINE 8',weapons)
-        res.render('profile', {weapons})
+router.post('/', upload.single('myFile'), (req,res)=>{
+    //result is the call back
+    //dthis is our post route
+    cloudinary.uploader.upload(req.file.path, (result)=>{
+      //if were doing a post route we need to find
+      db.cloudpic.findOrCreate({
+        where: {url: result.url}
+      })
+      .then(()=>{
+        //redirect whatever our page is our page
+        //need a route for it
+        res.redirect('profile')
+      })
+      .catch(err =>{
+        console.log('error: ', err)
+      })
+    
     })
+  })
 
-    .catch((error) => {
-        console.log("error", error);
-        res.render("error");
-      });
-})
-
-router.get('/new', (req, res) =>{
-    db.monster.findAll()
-    .then(monsters =>{
-        console.log('profile.js LINE 21 THESE ARE MONSTERS ',monsters)
-        res.render('profile', {monsters})
+  router.get('/', (req,res)=>{
+    //got to find our pic
+    db.cloudpic.findAll()
+    //what do you want to call this pic? plural
+    .then(myPics=>{
+        console.log('PROFILE.ejs LINE 34 🐝',myPics)
+      //render show and throw in mypics
+      res.render('profile', {myPics})
     })
-    .catch((error) => {
-        console.log("error", error);
-        res.render("error");
-      });
-})
+    .catch(err =>{
+      console.log('error line 38: ', err)
+    })
+  })
 
 
 

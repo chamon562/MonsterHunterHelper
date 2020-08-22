@@ -38,7 +38,8 @@ Who => : Monster hunter is a big game that has so many things to do, but just li
 
 What => : The app is to help MH players see weapons, and Armor attributes as well as see the monsters they need to defeat in order to get the items needed to craft what they want.
 
-## Why : This app can provide guindance for players, and give a faster way to access information they need for their items. For example, the Monster weakness and its items drops. Once the player clicks on the Monster it will show what the monster drops, and can make their judgement wether this Monster is worth their time. This helpful information can also be used to see the different attributes of Armor and its stats, and the same can go for the weapons. Also pictures always adds the cool factor how the armor looks along with the Monster they would have to face. Happy hunting they would say.
+## Why : 
+This app can provide guindance for players, and give a faster way to access information they need for their items. For example, the Monster weakness and its items drops. Once the player clicks on the Monster it will show what the monster drops, and can make their judgement wether this Monster is worth their time. This helpful information can also be used to see the different attributes of Armor and its stats, and the same can go for the weapons. Also pictures always adds the cool factor how the armor looks along with the Monster they would have to face. Happy hunting they would say.
 
 ### Wireframes
 
@@ -469,3 +470,104 @@ router.get("/:id", (req, res) => {
   <!-- to sbumit we need something -->
   <input type="submit" class="btn btn-primary" />
 </form>
+
+## Aug 22nd 2020 Goal
+- profile page
+## Aug 22nd 2020 progress
+- Created lots of style for each of my pages
+- made my favorites user specfic by adding where: {userId: req.user.id} in the findAll get route
+```js
+// before had .findAll() Instructor Mac showed me how the findAll was getting all the data and not being specifc.
+router.get("/", (req, res) => {
+  // so added in where which i wanted the userId to be the connector that relates the logged in user and the weapon
+  db.weapon
+    .findAll({
+      where: {userId: req.user.id}
+    })
+    .then((weapons) => {
+      console.log("profile.js THESE ARE weaponS LINE 8", weapons);
+      res.render("wepFave", { weapons });
+    })
+    .catch((error) => {
+      console.log("error", error);
+      res.render("error");
+    });
+});
+```
+## Aug 22nd 2020 Road Block
+
+
+# things used for cloudinary
+```js
+index.js
+
+const multer = require('multer')
+//multer requires a destination and take an object
+const upload = multer({ dest: './uploads'})
+const cloudinary = require('cloudinary')
+cloudinary.config(process.env.CLOUDINARY_URL)
+
+app.post('/', upload.single('myFile'), (req,res)=>{
+  //result is the call back
+  //dthis is our post route
+  cloudinary.uploader.upload(req.file.path, (result)=>{
+    //if were doing a post route we need to find
+    db.cloudpic.findOrCreate({
+      where: {url: result.url}
+    })
+    .then(()=>{
+      //redirect whatever our page is our page
+      //need a route for it
+      res.redirect('/show')
+    })
+    .catch(err =>{
+      console.log('error: ', err)
+    })
+  
+  })
+})
+//for this show.ejs to get it in a route
+// /show
+app.get('/show', (req,res)=>{
+  //got to find our pic
+  db.cloudpic.findAll()
+  //what do you want to call this pic? plural
+  .then(myPics=>{
+    //render show and throw in mypics
+    res.render('show', {myPics})
+  })
+  .catch(err =>{
+    console.log('error line 54: ', err)
+  })
+})
+
+// index.ejs
+<h1>File Upload</h1>
+<!-- when were uploading files we need to specify in form -->
+<!-- enctype="multipart/form-data" -->
+<form enctype="multipart/form-data" method="POST" action="/">
+  <input type="file" name="myFile" />
+  <!-- to sbumit we need something -->
+  <input type="submit" class="btn btn-primary" />
+</form>
+
+
+// show.ejs
+
+<a href="/">New pic?</a>
+<h1>this is my pic</h1>
+<!-- edge case -->
+
+<% if (myPics.length) { %>
+    <div class="picBox">
+        <% myPics.forEach(p =>{%>
+            <div>
+                <img src="<%= p.url%>" alt="picture">
+            </div>
+       <% })%>
+    </div>
+<%} else {%>
+    <h2>sorry i dont have pic</h2>
+<% }%>
+
+```
