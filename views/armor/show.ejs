@@ -1,18 +1,18 @@
 <a href="/armor">Back to Armor</a>
 <h1 style="text-align: center;"><img src="https://fontmeme.com/permalink/200822/b81f78e885431b2a7e61ade010c6fe49.png" alt="monsters-attack-empire-of-the-claw-font"></h1>
-<h2><%= armors.name%></h2>
-<h4>Armor Type: <%= armors.type %></h4>
+<h2 id="monTitles" style="text-align: center;"><%= armors.name%></h2>
+<h4 id="monTitles"> Armor Type: <%= armors.type %></h4>
 
-<div>
-<h4>Male</h4>
+<div style="display:flex">
+<h4 style="color: blueviolet;">Male</h4>
 <img src="<%= armors.assets.imageMale %>" alt=""> </h4>
-<h4>Female</h4>
+<h4 style="color:rgb(249, 105, 129);">Female</h4>
 <img src="<%= armors.assets.imageFemale %>" alt="">
 </div>
 
 <div>
-    <h3>Armor slots: <%= armors.slots %></h3>
-    <h3>Armor Skills</h3>
+    <h3 id="monTitles">Armor slots: <%= armors.slots %></h3>
+    <h3 id="monTitles">Armor Skills</h3>
     <ul>
         <% if(armors.skills[0]) {%>
             <li>Level: <%= armors.skills[0].level %></li>
@@ -27,7 +27,7 @@
 </div>
 
 <div>
-    <h3>Defense</h3>
+    <h3 id="monTitles">Defense</h3>
     <ul>
         <li>Armor base: <%= armors.defense.base %></li>
         <li>Armor max: <%= armors.defense.max%></li>
@@ -36,7 +36,7 @@
 </div>
 
 <div>
-    <h3>Resistence</h3>
+    <h3 id="monTitles">Resistence</h3>
     <ul>
         <li>Fire resist: <%= armors.resistances.fire %></li>
         <li>Water resist: <%= armors.resistances.fire %></li>
@@ -47,7 +47,7 @@
 </div>
 
 <div>
-    <h3>Crafting Materials</h3>
+    <h3 id="monTitles">Crafting Materials</h3>
     <ul>
         <li>Rarity: <%= armors.crafting.materials[0].item.rarity %></li>
         <li>Carry limit: <%= armors.crafting.materials[0].item.carryLimit %></li>
@@ -57,18 +57,18 @@
     </ul>
 </div>
 
-<h3>Comments</h3>
+<h3 id="monTitles">Comments</h3>
 <% comments.forEach(comment => { %>
-<div  style="width: 20%; background: gray; color: blue; " class="well">
-  <p>Name: <%= comment.name %> </p>
-  <p><%= comment.content %></p>
+<div  style="width: 20%; background: transparent; color: blue; " class="well">
+  <p><span style="color: rgb(59, 227, 44) ;">Name:</span><%= comment.name %> </p>
+  <p style="color: yellow;"><%= comment.content %></p>
  
 </div>
 <% }) %>
 <form method="POST" action="/armor/<%= armors.id%>">
-    <label for="name">Name</label>
-    <input style="width: 20%;" name="name" id="name" class="form-control" required>
-    <label for="content">Comment</label>
-    <textarea style="width: 40%;" type="text" name="content" id="content" class="form-control" cols="" rows="5"></textarea>
+    <label for="name"><span style="color: rgb(59, 227, 44) ;">Name</span></label>
+    <input style="width: 20%; background: transparent;" name="name" id="name" class="form-control" required>
+    <label for="content"><span style="color: rgb(215, 227, 44) ;">Comment</span></label>
+    <textarea style="width: 40%; background: transparent;" type="text" name="content" id="content" class="form-control" cols="" rows="5"></textarea>
     <input type="submit" class="btn btn-primary">
 </form>

@@ -2,8 +2,8 @@
 
 <h1 style="text-align: center;"><img src="https://fontmeme.com/permalink/200822/956a075f28ce0bf9d92b8a9626094e7c.png" alt="monsters-attack-empire-of-the-claw-font"></h1>
 
-<h1><%= weapons.name %></h1>
-<h3>Weapon Type: <%= weapons.type%></h3>
+<h1 id="wepTitles" style="text-align: center;"><%= weapons.name %></h1>
+<h3 id="wepTitles">Weapon Type: <%= weapons.type%></h3>
 <ul>
   <img src="<%= weapons.assets.image%>" alt="" />
   <li>Rarity: <%= weapons.rarity%></li>
@@ -26,7 +26,7 @@
 </ul>
 
 <div>
-  <h2>Durability</h2>
+  <h2 id="wepTitles">Durability</h2>
   <ul>
     <li>red: <%= weapons.durability[0].red %></li>
     <li>orange: <%= weapons.durability[0].orange %></li>
@@ -39,7 +39,7 @@
 </div>
 
 <div>
-  <h2>Crafting</h2>
+  <h2 id="wepTitles">Crafting</h2>
   <ul>
     <li>Craftable: <%= weapons.crafting.craftable %></li>
     <% if(weapons.crafting.craftingMaterials[0]){ %>
@@ -90,19 +90,19 @@
     <% } %>
   </ul>
 </div>
-<h3>Comments</h3>
+<h3 id="wepTitles">Comments</h3>
 <!-- didnt need weapons cuz passed in comments -->
 <% comments.forEach(comment => { %>
-<div  style="width: 20%; background: gray; color: blue;" class="well">
-    <p>Name: <%= comment.name %> </p>
-    <p><%= comment.content %></p>
+<div  style="width: 20%; background: transparent; color: blue;" class="well">
+    <p><span style="color: rgb(59, 227, 44) ;">Name:</span> <%= comment.name %> </p>
+    <p style="color: yellow;"><%= comment.content %></p>
 </div>
 <% }) %>
 
 <form method="POST" action="/weapon/<%= weapons.id %>">
-  <label for="name">Name</label>
-  <input style="width: 20%;" name="name" id="name" class="form-control" required /><br />
-  <label for="content">Comment</label>
-  <textarea style="width: 40%;" type="text" class="form-control" id="content" name="content" cols="0" rows="5" required></textarea>
+  <label for="name"><span style="color: rgb(59, 227, 44) ;">Name</span></label>
+  <input style="width: 20%; background: transparent;" name="name" id="name" class="form-control" required /><br />
+  <label for="content"><span style="color: rgb(215, 227, 44) ;">Comment</span></label>
+  <textarea style="width: 40%; background: transparent;" type="text" class="form-control" id="content" name="content" cols="0" rows="5" required></textarea>
   <input type="submit" class="btn btn-primary" />
 </form>

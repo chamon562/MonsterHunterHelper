@@ -1,7 +1,21 @@
 
 #body{
   background-color: rgba(0, 0, 0, 0.906);
-  color: brown;
+  color: aqua;
+  background-image: url(https://slm-assets.secondlife.com/assets/16013743/original/gif_Fireflies__on_black_5x5.gif?1484133621);
+  
+}
+
+
+#monTitles {
+  color: rgb(59, 227, 44);
+  text-shadow: 1px 1px rgba(5, 186, 186, 0.749);
+  
+}
+
+#wepTitles{
+  color: rgb(59, 227, 44);
+  text-shadow: 1px 1px rgba(5, 186, 186, 0.749);
 }
 nav ul li {
   text-decoration: none;

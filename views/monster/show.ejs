@@ -1,17 +1,17 @@
 <a href="/monster">Back to Monsters</a>
 <h1 style="text-align: center;"><img src="https://fontmeme.com/permalink/200822/128e29483c5a90456911352519883369.png" alt="monsters-attack-empire-of-the-claw-font"></h1>
 
-<div>
-  <h2><%= monsters.name%></h2>
-  <h3>Species: <%= monsters.species %></h3>
-  <h3>
+<div >
+  <h2 id="monTitles" style="text-align: center;"><%= monsters.name%></h2>
+  <h3 id="monTitles" style="text-align: center;">Species: <%= monsters.species %></h3>
+  <h3 style="text-align: center;">
     Sorry there is no image for this monster, but please enjoy this gif 🐯
+    <img src="https://i.redd.it/w7m1spdfude31.gif"  alt="" />
   </h3>
-  <img src="https://i.redd.it/w7m1spdfude31.gif" alt="" />
 
-  <h3>Description</h3>
+  <h3 id="monTitles">Description</h3>
   <p><%= monsters.description %></p>
-  <h3>Warning Moves</h3>
+  <h3 id="monTitles">*** Warning Moves ***</h3>
   <% if(monsters.ailments[0]) { %>
   <p>Be aware of: <%= monsters.ailments[0].name %></p>
   <p><%= monsters.ailments[0].description %></p>
@@ -22,16 +22,16 @@
   <% } else { %>
   <p>Your in luck! This Monster has no moves to worry about</p>
   <% } %>
-  <h3>Location Found</h3>
+  <h3 id="monTitles">Location Found</h3>
   <p><%= monsters.locations[0].name %></p>
 
-  <h3>Resistances</h3>
+  <h3 id="monTitles">Resistances</h3>
   <% if(monsters.resistances[0]) { %> <%= monsters.resistances[0].element%> <% }
   else { %>
   <p>This Monster has no resistances</p>
   <% } %>
 
-  <h3>Weakness</h3>
+  <h3 id="monTitles">Weakness</h3>
 
   <ul>
     <% for(let i = 0; i< monsters.weaknesses.length; i++) { %> <% let monWeak =
@@ -42,7 +42,7 @@
     <% } %>
   </ul>
 
-  <h3>Rewards</h3>
+  <h3 id="monTitles">Rewards</h3>
   <% if(monsters.rewards[0]) { %>
   <p><%= monsters.rewards[0].item.name %></p>
   <p>Item description: <%= monsters.rewards[0].item.description %></p>
@@ -51,7 +51,7 @@
     <li>Carry limit: <%= monsters.rewards[0].item.carryLimit %></li>
     <li>Value: <%= monsters.rewards[0].item.value %></li>
   </ul>
-  <h3>Conditions</h3>
+  <h3 id="monTitles">Conditions</h3>
   <p>On: <%= monsters.rewards[0].conditions[0].type %></p>
   <p>Carve where: <%= monsters.rewards[0].conditions[0].subtype%></p>
   <p>rank: <%= monsters.rewards[0].conditions[0].rank %></p>
@@ -63,19 +63,19 @@
   <% } %>
 </div>
 
-<h3>Comments</h3>
+<h3 id="monTitles">Comments</h3>
 <% comments.forEach(comment => { %>
-<div  style="width: 20%; background: gray; color: blue;" class="well">
-  <p>Name: <%= comment.name %> </p>
-  <p><%= comment.content %></p>
+<div  style="width: 20%; background: transparent; color: blue;" class="well">
+  <p> <span style="color: rgb(59, 227, 44) ;">Name:</span> <%= comment.name %> </p>
+  <p style="color: yellow;"><%= comment.content %></p>
  
 </div>
 <% }) %>
 
 <form method="POST" action="/monster/<%= monsters.id %>">
-  <label for="name">Name</label>
-  <input style="width: 20%;" name="name" id="name" class="form-control" required /><br />
-  <label for="content">Comment</label>
-  <textarea style="width: 40%;" type="text" class="form-control" id="content" name="content" cols="0" rows="5" required></textarea>
+  <label for="name"><span style="color: rgb(59, 227, 44) ;">Name</span></label>
+  <input style="width: 20%; background: transparent; outline: yellow;" name="name" id="name" class="form-control" required /><br />
+  <label for="content"><span style="color: rgb(215, 227, 44) ;">Comment</span></label>
+  <textarea style="width: 40%; background: transparent; outline: yellow;" type="text" class="form-control" id="content" name="content" cols="0" rows="5" required></textarea>
   <input type="submit" class="btn btn-primary" />
 </form>

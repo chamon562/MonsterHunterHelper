@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const axios = require("axios");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/", (req, res) => {
   db.weapon
