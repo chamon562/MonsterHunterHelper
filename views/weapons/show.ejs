@@ -93,11 +93,9 @@
 <h3>Comments</h3>
 <!-- didnt need weapons cuz passed in comments -->
 <% comments.forEach(comment => { %>
-<div class="well">
-  <p>
-    <%= comment.name %> <br />
-    <%= comment.content %>
-  </p>
+<div  style="width: 20%; background: gray; color: blue;" class="well">
+    <p>Name: <%= comment.name %> </p>
+    <p><%= comment.content %></p>
 </div>
 <% }) %>
 
