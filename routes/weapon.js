@@ -22,16 +22,22 @@ router.get("/", (req, res) => {
 // had to '/:name" to reference the name being
 // clicked from weapons.ejs line 7 <a href="/weapon/<%= w.name %>">
 // <p><%= w.name %></p>
-router.get("/:name", (req, res) => {
-  let name = req.params.name;
-  // console.log("weapons.js LINE 30 req.params.name is: ", name);
-  let weaponsUrl = `https://www.mhw-db.com/weapons/${name}`;
+router.get("/:id", (req, res) => {
+  console.log('id WEAPON LINE 26')
+  let id = req.params.id;
+  // console.log("weapons.js LINE 30 req.params.id is: ", id);
+  let weaponsUrl = `https://www.mhw-db.com/weapons/${id}`;
   axios
     .get(weaponsUrl)
     .then(function (apiResponse) {
       let weapons = apiResponse.data;
-
-      res.render("weapons/show", { weapons });
+      db.comment.findAll({
+        where: {weaponId: id}
+      })
+      .then(foundComments =>{
+        console.log('LINE 38 ',foundComments)
+        res.render("weapons/show", { weapons, comments: foundComments });
+      })
     })
     .catch((error) => {
       console.log("error", error);
@@ -39,39 +45,23 @@ router.get("/:name", (req, res) => {
     });
 });
 
-// GET /weapons/:id - display a specific post and its author
-// ('/:id') already in weapons and its parameter is :id i find it in where {id:req.params.id}
-router.get('/:id', (req, res) => {
-  db.weapon.findOne({
-    where: { id: req.params.id },
-    //db.comment added to include to show the comment from the database
-    include: [db.usergit, db.comment],
-  })
-  .then((weapons) => {
-    if (!weapons) throw Error()
-    //to show weapon.user
-    console.log(weapons.user)
-    console.log(weapons.comment)
-    //weapons tables is joining tables to itself
-    res.render('weapons/show', { weapon })
-  })
-  .catch((error) => {
-    console.log(error)
-    res.status(400).render('main/404')
-  })
-})
+
 
 router.post('/:id', (req, res) => {
   db.comment.create({
     name: req.body.name,
     content: req.body.content,
-    userId: req.user.id
+    // user: req.user.id,
+    weaponId:  req.params.id,
+    // monsterId:  req.params.id,
+    // armorId:  req.params.id
   })
   .then((comment) => {
-    res.redirect(`/weapons/${req.params.id}`);
+    console.log(`REDIRECTING TO/weapon/${req.params.id}`)
+    res.redirect(`/weapon/${req.params.id}`);
   })
   .catch((error) => {
-    console.log("weapon.js Line 74 ERROR ", error)
+    console.log("weapon.js Line 75 ERROR ", error)
     res.status(400).render('main/404')
   })
 })

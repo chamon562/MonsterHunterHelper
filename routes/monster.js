@@ -31,12 +31,34 @@ router.get("/:id", (req, res) => {
     .then(function (apiRepsonse) {
       let monsters = apiRepsonse.data;
       // console.log(monsters)
-      res.render("monster/show", { monsters });
+      db.comment.findAll({
+          where: { monsterId: id },
+        })
+        .then((foundComments) => {
+          console.log("monster.js LINE 37", foundComments);
+          res.render("monster/show", { monsters, comments: foundComments });
+        });
     })
     .catch((error) => {
       console.log("ERROR LINE 36 monsters.js", error);
       res.render("error");
     });
 });
+
+router.post('/:id', (req, res)=>{
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    monsterId: req.params.id
+  })
+  .then(comment =>{
+    console.log('monster.js LINE 55')
+    res.redirect(`/monster/${req.params.id}`)
+  })
+  .catch(error =>{
+    console.log('ERROR LINE 59 monster.js', error)
+    res.render(error)
+  })
+})
 
 module.exports = router;

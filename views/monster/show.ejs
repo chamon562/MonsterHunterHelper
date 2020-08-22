@@ -2,66 +2,80 @@
 <h1>Monster Page</h1>
 
 <div>
-    <h2><%= monsters.name%></h2>
-    <h3>Species: <%= monsters.species %></h3>
-    <h3>Sorry there is no image for this monster, but please enjoy this gif 🐯</h3>
-    <img src="https://i.redd.it/w7m1spdfude31.gif" alt="">
+  <h2><%= monsters.name%></h2>
+  <h3>Species: <%= monsters.species %></h3>
+  <h3>
+    Sorry there is no image for this monster, but please enjoy this gif 🐯
+  </h3>
+  <img src="https://i.redd.it/w7m1spdfude31.gif" alt="" />
 
-    <h3>Description</h3>
-    <p><%= monsters.description %></p>
-    <h3>Warning Moves</h3>
-    <% if(monsters.ailments[0]) { %>
-      <p>Be aware of:  <%= monsters.ailments[0].name %></p> 
-      <p><%= monsters.ailments[0].description %></p> 
-      <p>To cure this status use: <%= monsters.ailments[0].recovery.items[0].name %></p>
-      <p> <%= monsters.ailments[0].recovery.items[0].description%></p>
-  <%  } else { %>
-    <p>Your in luck! This Monster has no moves to worry about</p>
-  <% } %> 
-    <h3>Location Found</h3>
-    <p><%= monsters.locations[0].name %></p>
+  <h3>Description</h3>
+  <p><%= monsters.description %></p>
+  <h3>Warning Moves</h3>
+  <% if(monsters.ailments[0]) { %>
+  <p>Be aware of: <%= monsters.ailments[0].name %></p>
+  <p><%= monsters.ailments[0].description %></p>
+  <p>
+    To cure this status use: <%= monsters.ailments[0].recovery.items[0].name %>
+  </p>
+  <p><%= monsters.ailments[0].recovery.items[0].description%></p>
+  <% } else { %>
+  <p>Your in luck! This Monster has no moves to worry about</p>
+  <% } %>
+  <h3>Location Found</h3>
+  <p><%= monsters.locations[0].name %></p>
 
-    <h3>Resistances</h3>
-    <% if(monsters.resistances[0]) { %>
-        <%= monsters.resistances[0].element%>
-   <% } else { %>
-    <p>This Monster has no resistances</p>
-   <% } %>
+  <h3>Resistances</h3>
+  <% if(monsters.resistances[0]) { %> <%= monsters.resistances[0].element%> <% }
+  else { %>
+  <p>This Monster has no resistances</p>
+  <% } %>
 
-   <h3>Weakness</h3>
-   
-   <ul>
-       <% for(let i = 0; i< monsters.weaknesses.length; i++) { %>
-           <% let monWeak = monsters.weaknesses[i]%>
-           <li><%= monWeak.element %></li>
-           <li>Stars: <%= monWeak.stars %></li>
+  <h3>Weakness</h3>
 
-       <% } %>
-      
-   </ul>
+  <ul>
+    <% for(let i = 0; i< monsters.weaknesses.length; i++) { %> <% let monWeak =
+    monsters.weaknesses[i]%>
+    <li><%= monWeak.element %></li>
+    <li>Stars: <%= monWeak.stars %></li>
 
-   <h3>Rewards</h3>
-   <% if(monsters.rewards[0]) { %>
-       <p><%= monsters.rewards[0].item.name %> </p>
-       <p>Item description: <%= monsters.rewards[0].item.description %></p>
-       <ul>
-        <li>Rarity: <%= monsters.rewards[0].item.rarity %></li>
-        <li>Carry limit: <%= monsters.rewards[0].item.carryLimit %></li>
-        <li>Value: <%= monsters.rewards[0].item.value %></li>
-    </ul>
-    <h3>Conditions</h3>
-   <p>On: <%= monsters.rewards[0].conditions[0].type %></p>
-   <p>Carve where: <%= monsters.rewards[0].conditions[0].subtype%></p>
-   <p>rank: <%= monsters.rewards[0].conditions[0].rank %></p>
-   <p>quantity: <%= monsters.rewards[0].conditions[0].quantity %></p>
-   <p>chance: <%= monsters.rewards[0].conditions[0].chance%>%</p>
-    <% } else { %>
-        <p>This Monster has no rewards show</p>
-        <p>This Monster has no conditions to show</p>
-  <%  } %>
-   
-   
+    <% } %>
+  </ul>
 
+  <h3>Rewards</h3>
+  <% if(monsters.rewards[0]) { %>
+  <p><%= monsters.rewards[0].item.name %></p>
+  <p>Item description: <%= monsters.rewards[0].item.description %></p>
+  <ul>
+    <li>Rarity: <%= monsters.rewards[0].item.rarity %></li>
+    <li>Carry limit: <%= monsters.rewards[0].item.carryLimit %></li>
+    <li>Value: <%= monsters.rewards[0].item.value %></li>
+  </ul>
+  <h3>Conditions</h3>
+  <p>On: <%= monsters.rewards[0].conditions[0].type %></p>
+  <p>Carve where: <%= monsters.rewards[0].conditions[0].subtype%></p>
+  <p>rank: <%= monsters.rewards[0].conditions[0].rank %></p>
+  <p>quantity: <%= monsters.rewards[0].conditions[0].quantity %></p>
+  <p>chance: <%= monsters.rewards[0].conditions[0].chance%>%</p>
+  <% } else { %>
+  <p>This Monster has no rewards show</p>
+  <p>This Monster has no conditions to show</p>
+  <% } %>
 </div>
 
+<h3>Comments</h3>
+<% comments.forEach(comment => { %>
+<div  style="width: 20%; background: gray; color: blue;" class="well">
+  <p>Name: <%= comment.name %> </p>
+  <p><%= comment.content %></p>
+ 
+</div>
+<% }) %>
 
+<form method="POST" action="/monster/<%= monsters.id %>">
+  <label for="name">Name</label>
+  <input style="width: 20%;" name="name" id="name" class="form-control" required /><br />
+  <label for="content">Comment</label>
+  <textarea style="width: 40%;" type="text" class="form-control" id="content" name="content" cols="0" rows="5" required></textarea>
+  <input type="submit" class="btn btn-primary" />
+</form>

@@ -2,94 +2,109 @@
 
 <h1>Weapon show page. Show the details</h1>
 
-<h1><%= weapons.name %> </h1>
+<h1><%= weapons.name %></h1>
 <h3>Weapon Type: <%= weapons.type%></h3>
 <ul>
-    <img src="<%= weapons.assets.image%>" alt="">
-    <li>Rarity: <%= weapons.rarity%></li>
-    <li>Attack Damage: <%= weapons.attack.display%> dmg per hit.</li>
-    <% if(weapons.damageType) { %>
-        <li>Elder Seal: <%= weapons.elderseal%></li>
-        <li>Damage Type: <%= weapons.damageType%></li>
-        
-   <% } else if(weapons.elements[0]) { %>
-    <li>Elder Seal: <%= weapons.elderseal%></li>
-        <li>Damage Type: <%= weapons.damageType%></li>
-        <li>Damage Element Type: <%= weapons.elements[0].type%></li>
-        <li>Damge from Element: + <%= weapons.elements[0].damage%> dmg per hit.</li>
-        <li>Element hidden: <%= weapons.elements[0].hidden%></li>
+  <img src="<%= weapons.assets.image%>" alt="" />
+  <li>Rarity: <%= weapons.rarity%></li>
+  <li>Attack Damage: <%= weapons.attack.display%> dmg per hit.</li>
+  <% if(weapons.damageType) { %>
+  <li>Elder Seal: <%= weapons.elderseal%></li>
+  <li>Damage Type: <%= weapons.damageType%></li>
+
+  <% } else if(weapons.elements[0]) { %>
+  <li>Elder Seal: <%= weapons.elderseal%></li>
+  <li>Damage Type: <%= weapons.damageType%></li>
+  <li>Damage Element Type: <%= weapons.elements[0].type%></li>
+  <li>Damge from Element: + <%= weapons.elements[0].damage%> dmg per hit.</li>
+  <li>Element hidden: <%= weapons.elements[0].hidden%></li>
   <% } else { %>
-    <li>Damage Element Type: <%= weapons.elements[0].type%></li>
-    <li>Damge from Element: + <%= weapons.elements[0].damage%> dmg per hit.</li>
-    <li>Element hidden: <%= weapons.elements[0].hidden%></li>
- <% } %>
+  <li>Damage Element Type: <%= weapons.elements[0].type%></li>
+  <li>Damge from Element: + <%= weapons.elements[0].damage%> dmg per hit.</li>
+  <li>Element hidden: <%= weapons.elements[0].hidden%></li>
+  <% } %>
 </ul>
 
 <div>
-    <h2>Durability</h2>
-    <ul> 
-        <li>red: <%= weapons.durability[0].red %></li>
-        <li>orange: <%= weapons.durability[0].orange %></li>
-        <li>yellow: <%= weapons.durability[0].yellow %></li>
-        <li>green: <%= weapons.durability[0].green %></li>
-        <li>blue: <%= weapons.durability[0].blue %></li>
-        <li>white: <%= weapons.durability[0].white %></li>
-        <li>purple: <%= weapons.durability[0].purple %></li>
-    </ul>
+  <h2>Durability</h2>
+  <ul>
+    <li>red: <%= weapons.durability[0].red %></li>
+    <li>orange: <%= weapons.durability[0].orange %></li>
+    <li>yellow: <%= weapons.durability[0].yellow %></li>
+    <li>green: <%= weapons.durability[0].green %></li>
+    <li>blue: <%= weapons.durability[0].blue %></li>
+    <li>white: <%= weapons.durability[0].white %></li>
+    <li>purple: <%= weapons.durability[0].purple %></li>
+  </ul>
 </div>
 
 <div>
-    <h2>Crafting</h2>
-    <ul>
-        <li>Craftable: <%= weapons.crafting.craftable %></li>
-       <% if(weapons.crafting.craftingMaterials[0]){ %>
-        <li>Crafting Tree routes: <%= weapons.crafting.branches[0] %></li>
-        <p> Crafting Materials</p>
-        <li>Id: <%= weapons.crafting.craftingMaterials[0].item.id%></li>
-        <li>Rarity: <%= weapons.crafting.craftingMaterials[0].item.rarity%></li>
-        <li>Carry Limit: <%= weapons.crafting.craftingMaterials[0].item.carryLimit%></li>
-        <li>Value: <%= weapons.crafting.craftingMaterials[0].item.value%></li>
-        <li>Material Name: <%= weapons.crafting.craftingMaterials[0].item.name%></li>
-        <li>Description: <%= weapons.crafting.craftingMaterials[0].item.description%></li>
+  <h2>Crafting</h2>
+  <ul>
+    <li>Craftable: <%= weapons.crafting.craftable %></li>
+    <% if(weapons.crafting.craftingMaterials[0]){ %>
+    <li>Crafting Tree routes: <%= weapons.crafting.branches[0] %></li>
+    <p>Crafting Materials</p>
+    <li>Id: <%= weapons.crafting.craftingMaterials[0].item.id%></li>
+    <li>Rarity: <%= weapons.crafting.craftingMaterials[0].item.rarity%></li>
+    <li>
+      Carry Limit: <%= weapons.crafting.craftingMaterials[0].item.carryLimit%>
+    </li>
+    <li>Value: <%= weapons.crafting.craftingMaterials[0].item.value%></li>
+    <li>
+      Material Name: <%= weapons.crafting.craftingMaterials[0].item.name%>
+    </li>
+    <li>
+      Description: <%= weapons.crafting.craftingMaterials[0].item.description%>
+    </li>
 
-       <% } else if(weapons.crafting.upgradeMaterials[0]) { %>
-        
-        <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
-        <li>Id: <%= weapons.crafting.upgradeMaterials[0].item.id%></li>
-        <li>Rarity: <%= weapons.crafting.upgradeMaterials[0].item.rarity%></li>
-        <li>Carry Limit: <%= weapons.crafting.upgradeMaterials[0].item.carryLimit%></li>
-        <li>Value: <%= weapons.crafting.upgradeMaterials[0].item.value%></li>
-        <li>Material Name: <%= weapons.crafting.upgradeMaterials[0].item.name%></li>
-        <li>Description: <%= weapons.crafting.upgradeMaterials[0].item.description%></li>
-        <% } else {%>
-            <li>Description: <%= weapons.crafting.upgradeMaterials[1].item.description%></li>
-            <li>Id: <%= weapons.crafting.upgradeMaterials[1].item.id%></li>
-            <li>Rarity: <%= weapons.crafting.upgradeMaterials[1].item.rarity%></li>
-            <li>Carry Limit: <%= weapons.crafting.upgradeMaterials[1].item.carryLimit%></li>
-            <li>Value: <%= weapons.crafting.upgradeMaterials[1].item.value%></li>
-            <li>Material Name: <%= weapons.crafting.upgradeMaterials[1].item.name%></li>
-            <li>Description: <%= weapons.crafting.upgradeMaterials[1].item.description%></li>  
-       <% } %>
+    <% } else if(weapons.crafting.upgradeMaterials[0]) { %>
 
-        
-       
-    </ul>
+    <li>
+      Description: <%= weapons.crafting.upgradeMaterials[0].item.description%>
+    </li>
+    <li>Id: <%= weapons.crafting.upgradeMaterials[0].item.id%></li>
+    <li>Rarity: <%= weapons.crafting.upgradeMaterials[0].item.rarity%></li>
+    <li>
+      Carry Limit: <%= weapons.crafting.upgradeMaterials[0].item.carryLimit%>
+    </li>
+    <li>Value: <%= weapons.crafting.upgradeMaterials[0].item.value%></li>
+    <li>Material Name: <%= weapons.crafting.upgradeMaterials[0].item.name%></li>
+    <li>
+      Description: <%= weapons.crafting.upgradeMaterials[0].item.description%>
+    </li>
+    <% } else {%>
+    <li>
+      Description: <%= weapons.crafting.upgradeMaterials[1].item.description%>
+    </li>
+    <li>Id: <%= weapons.crafting.upgradeMaterials[1].item.id%></li>
+    <li>Rarity: <%= weapons.crafting.upgradeMaterials[1].item.rarity%></li>
+    <li>
+      Carry Limit: <%= weapons.crafting.upgradeMaterials[1].item.carryLimit%>
+    </li>
+    <li>Value: <%= weapons.crafting.upgradeMaterials[1].item.value%></li>
+    <li>Material Name: <%= weapons.crafting.upgradeMaterials[1].item.name%></li>
+    <li>
+      Description: <%= weapons.crafting.upgradeMaterials[1].item.description%>
+    </li>
+    <% } %>
+  </ul>
 </div>
+<h3>Comments</h3>
+<!-- didnt need weapons cuz passed in comments -->
+<% comments.forEach(comment => { %>
+<div class="well">
+  <p>
+    <%= comment.name %> <br />
+    <%= comment.content %>
+  </p>
+</div>
+<% }) %>
 
-    
-<% weapons.comment.forEach(comment => { %>
-    <div class="well">
-      <p>
-        <%= comment.name %> 
-        <%= comment.content %>
-      </p>
-    </div>
-    <% }) %>
-<form method="POST" action="/weapon/<%= weapons.name %>">
-    <label for="name">Name</label>
-    <input name="name" id="name" class="form-control" required><br>
-    <label for="content">Comment</label>
-    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
-    <input type="submit" class="btn btn-primary">
+<form method="POST" action="/weapon/<%= weapons.id %>">
+  <label for="name">Name</label>
+  <input style="width: 20%;" name="name" id="name" class="form-control" required /><br />
+  <label for="content">Comment</label>
+  <textarea style="width: 40%;" type="text" class="form-control" id="content" name="content" cols="0" rows="5" required></textarea>
+  <input type="submit" class="btn btn-primary" />
 </form>
-
