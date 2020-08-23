@@ -1,6 +1,5 @@
-# Project 2 Planning
-
-Fork & Clone this repo.
+# My Project2 at GA heroku link
+(https://project-two-channee.herokuapp.com/)
 
 ## Part 1
 
@@ -473,6 +472,8 @@ router.get("/:id", (req, res) => {
 
 ## Aug 22nd 2020 Goal
 - profile page
+- add bio to profile 
+- add button animation 
 ## Aug 22nd 2020 progress
 - Created lots of style for each of my pages
 - made my favorites user specfic by adding where: {userId: req.user.id} in the findAll get route
@@ -494,80 +495,25 @@ router.get("/", (req, res) => {
     });
 });
 ```
-## Aug 22nd 2020 Road Block
+- made user profile with cloudinary to show profile pic and only show the picture they just submited
 
-
-# things used for cloudinary
 ```js
-index.js
-
-const multer = require('multer')
-//multer requires a destination and take an object
-const upload = multer({ dest: './uploads'})
-const cloudinary = require('cloudinary')
-cloudinary.config(process.env.CLOUDINARY_URL)
-
-app.post('/', upload.single('myFile'), (req,res)=>{
-  //result is the call back
-  //dthis is our post route
-  cloudinary.uploader.upload(req.file.path, (result)=>{
-    //if were doing a post route we need to find
-    db.cloudpic.findOrCreate({
-      where: {url: result.url}
-    })
-    .then(()=>{
-      //redirect whatever our page is our page
-      //need a route for it
-      res.redirect('/show')
-    })
-    .catch(err =>{
-      console.log('error: ', err)
-    })
-  
-  })
-})
-//for this show.ejs to get it in a route
-// /show
-app.get('/show', (req,res)=>{
-  //got to find our pic
-  db.cloudpic.findAll()
-  //what do you want to call this pic? plural
-  .then(myPics=>{
-    //render show and throw in mypics
-    res.render('show', {myPics})
-  })
-  .catch(err =>{
-    console.log('error line 54: ', err)
-  })
-})
-
-// index.ejs
-<h1>File Upload</h1>
-<!-- when were uploading files we need to specify in form -->
-<!-- enctype="multipart/form-data" -->
-<form enctype="multipart/form-data" method="POST" action="/">
-  <input type="file" name="myFile" />
-  <!-- to sbumit we need something -->
-  <input type="submit" class="btn btn-primary" />
-</form>
-
-
-// show.ejs
-
-<a href="/">New pic?</a>
-<h1>this is my pic</h1>
-<!-- edge case -->
-
+// profile.ejs before had myPics.forEach showing each picture uploaded
 <% if (myPics.length) { %>
-    <div class="picBox">
-        <% myPics.forEach(p =>{%>
-            <div>
-                <img src="<%= p.url%>" alt="picture">
-            </div>
-       <% })%>
-    </div>
+<div class="picBox">
+  <% //myPics.forEach(p =>{%>
+  
+  <div class="proImage">
+  // was shown that I could take the index number and put in sipmple logic to not move to the next image by saying myPics.length -1
+    <img src="<%= myPics[myPics.length - 1].url%>" alt="picture" />
+  </div>
+  
+  <% //})%>
+</div>
 <%} else {%>
     <h2>sorry i dont have pic</h2>
-<% }%>
-
+    <% }%>
 ```
+
+## Aug 22nd 2020 Road Block
+- image uploaded not resizing *** Fixed ***
