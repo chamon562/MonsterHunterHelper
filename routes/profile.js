@@ -12,7 +12,10 @@ router.post('/', upload.single('myFile'), (req,res)=>{
     cloudinary.uploader.upload(req.file.path, (result)=>{
       //if were doing a post route we need to find
       db.cloudpic.findOrCreate({
-        where: {url: result.url}
+        where: {
+            url: result.url, 
+            userId: req.user.id
+        }
       })
       .then(()=>{
         //redirect whatever our page is our page
@@ -28,7 +31,9 @@ router.post('/', upload.single('myFile'), (req,res)=>{
 
   router.get('/', (req,res)=>{
     //got to find our pic
-    db.cloudpic.findAll()
+    db.cloudpic.findAll({
+        where: {userId: req.user.id}
+    })
     //what do you want to call this pic? plural
     .then(myPics=>{
         console.log('PROFILE.ejs LINE 34 🐝',myPics)
@@ -40,6 +45,20 @@ router.post('/', upload.single('myFile'), (req,res)=>{
     })
   })
 
+  router.delete("/", (req, res) => {
+    db.cloudpic.destroy({
+        //still have access this params in .then
+        where: {id: req.params.id}
+      })
+      //delete the project but not the category
+      .then(() => {
+        res.redirect("profile");
+      })
+      .catch((error) => {
+        console.log("profile.js Line 58 error 🐯", error);
+        res.render("error", error);
+      });
+  });
 
 
 

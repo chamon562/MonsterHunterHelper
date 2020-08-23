@@ -1,29 +1,27 @@
-<h1>Welcome to your PROFILE</h1>
+<h1 style="text-align: center;"><img src="https://fontmeme.com/permalink/200823/0316d8fcf2d8e34b3a3efaa4067f1989.png" alt="monsters-attack-empire-of-the-claw-font"></h1>
 
-<a href="/">New pic?</a>
-<h1>this is my pic</h1>
+<h1>Profile Pic </h1>
 <!-- edge case -->
 
 <% if (myPics.length) { %>
-    <div class="picBox">
-        <% myPics.forEach(p =>{%>
-            <div>
-                <img src="<%= p.url%>" alt="picture">
-            </div>
-       <% })%>
-    </div>
+<div class="picBox">
+  <% //myPics.forEach(p =>{%>
+  <div class="proImage">
+    <img src="<%= myPics[myPics.length - 1].url%>" alt="picture" />
+  </div>
+  
+  <% //})%>
+</div>
 <%} else {%>
     <h2>sorry i dont have pic</h2>
-<% }%>
-
-
-
-
-<h1>File Upload</h1>
-<!-- when were uploading files we need to specify in form -->
-<!-- enctype="multipart/form-data" -->
-<form enctype="multipart/form-data" method="POST" action="/profile">
-  <input type="file" name="myFile" />
-  <!-- to sbumit we need something -->
-  <input type="submit" class="btn btn-primary" />
-</form>
+    <% }%>
+    
+    <h3>change profile pic?</h3>
+    <!-- when were uploading files we need to specify in form -->
+    <!-- enctype="multipart/form-data" -->
+    <form enctype="multipart/form-data" method="POST" action="/profile">
+      <input type="file" name="myFile" />
+      <!-- to sbumit we need something -->
+      <input type="submit" class="btn btn-primary" />
+    </form>
+    

@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       models.user.hasMany(models.weapon)
       models.user.hasMany(models.monster)
       models.user.hasMany(models.armor)
+      models.user.hasMany(models.cloudpic)
 
     }
   };
