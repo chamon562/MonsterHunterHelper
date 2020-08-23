@@ -548,3 +548,4 @@ router.get("/", (req, res) => {
 ## Aug 22nd 2020 Road Block
 
 - image uploaded not resizing **_ Fixed _**
+- tried adding a like button in weapons folder show.ejs and only one heart lights up and not the rest. 
