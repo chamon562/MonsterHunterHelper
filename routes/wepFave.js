@@ -66,7 +66,7 @@ router.delete("/:id", (req, res) => {
       res.redirect("/wepFave");
     })
     .catch((error) => {
-      console.log("wepFave.js Line 66 error 🐯", error);
+      console.log("wepFave.js Line 69 error 🐯", error);
       res.render("error", error);
     });
 });

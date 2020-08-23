@@ -1,4 +1,4 @@
-# My Project2 at GA heroku link
+# My Project2 at GA heroku link down here
 (https://project-two-channee.herokuapp.com/)
 
 ## Part 1
@@ -37,8 +37,15 @@ Who => : Monster hunter is a big game that has so many things to do, but just li
 
 What => : The app is to help MH players see weapons, and Armor attributes as well as see the monsters they need to defeat in order to get the items needed to craft what they want.
 
-## Why : 
-This app can provide guindance for players, and give a faster way to access information they need for their items. For example, the Monster weakness and its items drops. Once the player clicks on the Monster it will show what the monster drops, and can make their judgement wether this Monster is worth their time. This helpful information can also be used to see the different attributes of Armor and its stats, and the same can go for the weapons. Also pictures always adds the cool factor how the armor looks along with the Monster they would have to face. Happy hunting they would say.
+## Why :
+
+This website aims to help provide game guindance, and gives a faster way to
+access information MH Players need in order to enhance their playing experience. For example, the
+Monster's weakness and its items drops. Once the player clicks on the
+Monster it will show what the monster drops, and can make their judgement
+wether this Monster is worth their time. This helpful information can also
+be used to see the many attributes of an Armor piece and its stats, and the
+same can go for the weapons. Happy hunting!
 
 ### Wireframes
 
@@ -53,7 +60,8 @@ This app can provide guindance for players, and give a faster way to access info
 
 Make a PR when you're done!
 
-aug 14th, 2020 created a weapon model with name and foreign key
+## Aug 14th, 2020 Progress 
+- created a weapon model with name and foreign key
 
 - sequelize models:create --name weapon --attributes name:string,userId:integer
 - Assocation link done in models folder for user.js
@@ -387,18 +395,35 @@ router.put("/:id", (req, res) => {
 - have the user customize their profile
 
 ## Aug 21st 2020 Progress
+
 - Comment Section for weapon works.
 - found a way to resize my comment and name boxes in my form with style="width 20%".
+
 ```html
 <form method="POST" action="/monster/<%= monsters.id%>">
-    <label for="name">Name</label>
-    <!-- here i added in style to resize the box area for name -->
-    <input style="width: 20%;" name="name" id="name" class="form-control" required>
-    <label for="content">Comment</label>
-    <textarea style="width: 40%;" name="content" id="content" class="form-control" cols="0" rows="5" required></textarea>
-    <input type="submit" class="btn btn-primary">
+  <label for="name">Name</label>
+  <!-- here i added in style to resize the box area for name -->
+  <input
+    style="width: 20%;"
+    name="name"
+    id="name"
+    class="form-control"
+    required
+  />
+  <label for="content">Comment</label>
+  <textarea
+    style="width: 40%;"
+    name="content"
+    id="content"
+    class="form-control"
+    cols="0"
+    rows="5"
+    required
+  ></textarea>
+  <input type="submit" class="btn btn-primary" />
 </form>
 ```
+
 ## Aug 21st 2020 Road Blocc
 
 - Fixed: got help by instructor Taylor, she gracefully explained what was missing and what to reference to get my comments to show under my weapon.js page .this was in show.ejs on the very bottomdeleted weapons out to comment.forEach because I added .then to the existing route in weapons.
@@ -439,7 +464,7 @@ router.get("/:id", (req, res) => {
       </p>
     </div>
     <% }) %>
-// changed to 
+// changed to
 <% comment.forEach(comment => { %>
     <div class="well">
       <p>
@@ -450,18 +475,18 @@ router.get("/:id", (req, res) => {
     <% }) %>
 ```
 
-
 <% if (myPics.length) { %>
-    <div class="picBox">
-        <% myPics.forEach(p =>{%>
+<div class="picBox">
+<% myPics.forEach(p =>{%>
             <div>
                 <img src="<%= p.url%>" alt="picture">
             </div>
        <% })%>
     </div>
 <%} else {%>
-    <h2>sorry i dont have pic</h2>
+<h2>sorry i dont have pic</h2>
 <% }%>
+
 <!-- when were uploading files we need to specify in form -->
 <!-- enctype="multipart/form-data" -->
 <form enctype="multipart/form-data" method="POST" action="/">
@@ -471,19 +496,23 @@ router.get("/:id", (req, res) => {
 </form>
 
 ## Aug 22nd 2020 Goal
+
 - profile page
-- add bio to profile 
-- add button animation 
+- add bio to profile
+- add button animation
+
 ## Aug 22nd 2020 progress
+
 - Created lots of style for each of my pages
 - made my favorites user specfic by adding where: {userId: req.user.id} in the findAll get route
+
 ```js
 // before had .findAll() Instructor Mac showed me how the findAll was getting all the data and not being specifc.
 router.get("/", (req, res) => {
   // so added in where which i wanted the userId to be the connector that relates the logged in user and the weapon
   db.weapon
     .findAll({
-      where: {userId: req.user.id}
+      where: { userId: req.user.id },
     })
     .then((weapons) => {
       console.log("profile.js THESE ARE weaponS LINE 8", weapons);
@@ -495,6 +524,7 @@ router.get("/", (req, res) => {
     });
 });
 ```
+
 - made user profile with cloudinary to show profile pic and only show the picture they just submited
 
 ```js
@@ -502,12 +532,12 @@ router.get("/", (req, res) => {
 <% if (myPics.length) { %>
 <div class="picBox">
   <% //myPics.forEach(p =>{%>
-  
+
   <div class="proImage">
   // was shown that I could take the index number and put in sipmple logic to not move to the next image by saying myPics.length -1
     <img src="<%= myPics[myPics.length - 1].url%>" alt="picture" />
   </div>
-  
+
   <% //})%>
 </div>
 <%} else {%>
@@ -516,4 +546,5 @@ router.get("/", (req, res) => {
 ```
 
 ## Aug 22nd 2020 Road Block
-- image uploaded not resizing *** Fixed ***
+
+- image uploaded not resizing **_ Fixed _**

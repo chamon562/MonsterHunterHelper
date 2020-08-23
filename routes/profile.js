@@ -20,7 +20,7 @@ router.post('/', upload.single('myFile'), (req,res)=>{
       .then(()=>{
         //redirect whatever our page is our page
         //need a route for it
-        res.redirect('profile')
+        res.redirect('/profile')
       })
       .catch(err =>{
         console.log('error: ', err)
@@ -36,26 +36,27 @@ router.post('/', upload.single('myFile'), (req,res)=>{
     })
     //what do you want to call this pic? plural
     .then(myPics=>{
-        console.log('PROFILE.ejs LINE 34 🐝',myPics)
+        console.log('PROFILE.ejs LINE 39 🐝',myPics)
       //render show and throw in mypics
       res.render('profile', {myPics})
     })
     .catch(err =>{
-      console.log('error line 38: ', err)
+      console.log('error line 44: ', err)
     })
   })
 
-  router.delete("/", (req, res) => {
+  router.delete("/:id", (req, res) => {
     db.cloudpic.destroy({
+        
         //still have access this params in .then
         where: {id: req.params.id}
       })
       //delete the project but not the category
       .then(() => {
-        res.redirect("profile");
+        res.redirect("/profile");
       })
       .catch((error) => {
-        console.log("profile.js Line 58 error 🐯", error);
+        console.log("profile.js Line 59 error 🐯", error);
         res.render("error", error);
       });
   });

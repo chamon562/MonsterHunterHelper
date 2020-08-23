@@ -1,3 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+#container{
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+  border-radius: 50px; 
+}
+
+#container i{
+  font-size: 25px;
+  transition: .9s;
+}
+#container:hover i{
+color: red
+}
+
+#fas{
+  color: rgb(250, 17, 17) ;
+}
 
 #body{
   background-color: rgba(0, 0, 0, 0.906);
@@ -5,6 +28,9 @@
   background-image: url(https://slm-assets.secondlife.com/assets/16013743/original/gif_Fireflies__on_black_5x5.gif?1484133621);
   
 }
+
+
+
 .proImage img{
   border-radius: 25px;
   width: 400px;
