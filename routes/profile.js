@@ -45,22 +45,6 @@ router.post('/', upload.single('myFile'), (req,res)=>{
     })
   })
 
-  router.delete("/:id", (req, res) => {
-    db.cloudpic.destroy({
-        
-        //still have access this params in .then
-        where: {id: req.params.id}
-      })
-      //delete the project but not the category
-      .then(() => {
-        res.redirect("/profile");
-      })
-      .catch((error) => {
-        console.log("profile.js Line 59 error 🐯", error);
-        res.render("error", error);
-      });
-  });
-
-
+  
 
 module.exports = router

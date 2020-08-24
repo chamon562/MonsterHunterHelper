@@ -1,5 +1,9 @@
 # My Project2 at GA heroku link down here
+
 (https://project-two-channee.herokuapp.com/)
+
+# Setup 
+- Hello and please make sure to npm install after forking and cloning this repo. 
 
 ## Part 1
 
@@ -60,7 +64,8 @@ same can go for the weapons. Happy hunting!
 
 Make a PR when you're done!
 
-## Aug 14th, 2020 Progress 
+## Aug 14th, 2020 Progress
+
 - created a weapon model with name and foreign key
 
 - sequelize models:create --name weapon --attributes name:string,userId:integer
@@ -476,6 +481,7 @@ router.get("/:id", (req, res) => {
 ```
 
 <% if (myPics.length) { %>
+
 <div class="picBox">
 <% myPics.forEach(p =>{%>
             <div>
@@ -542,10 +548,54 @@ router.get("/", (req, res) => {
 </div>
 <%} else {%>
     <h2>sorry i dont have pic</h2>
-    <% }%>
+  <% }%>
 ```
 
 ## Aug 22nd 2020 Road Block
 
 - image uploaded not resizing **_ Fixed _**
-- tried adding a like button in weapons folder show.ejs and only one heart lights up and not the rest. 
+- tried adding a like button in weapons folder show.ejs and only one heart lights up and not the rest.
+
+## Aug 23rd 2020 Goals
+
+- Finish read me
+
+## Aug 23rd 2020 Progress
+
+## Aug 23rd 2020 Road Block
+
+- decided to take out likes on comment because cant figure out why it only counts for the first comment an not the rest
+
+```js
+ <div id="container">
+    <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+  </div>
+<script>
+
+  let btn = document.getElementById('btn');
+  function Toggle(){
+    if(btn.classList.contains ("far")){
+      btn.classList.remove("far")
+      btn.classList.add("fas")
+    }else{
+      btn.classList.remove("fas")
+      btn.classList.add("far")
+    }
+  }
+</script>
+```
+# Project 2 Conclusion Aug 23 2020
+For now I hit most goals that I wanted within this project. Created models for armor, weapon, monsters, and comments. Furthermore, I added associations specifically linked to the current user logged in to be able to click and have a favorite as well as comment on the details page for each catagoeryl. 
+
+This whole process was one big collection of the things Ive learned in class, and even though it was stressfull, I respectively enjoyed crafting my website. I am 6 weeks in going on to 7 at my current SEI course at General Assembly ,and, my experience thus far has taught me alot about my self learning and the resillience to never quit. 
+
+I never forget those who have helped me in my struggles, so I wanna give a warm thank you to all my instructors again at GA who have given my class and I more time to finish up our projects as well as individually day by day give help and feedback on getting project 2 going. Moreover, I wanna send love out to: 
+- All my wonderful Classmates
+
+- My pod group Levin Battalones and Lizz Westerband, for help, support, and always checking to see if everything is all good with me. 
+
+- Yoel Morad for his wise words and wisdeom along the way in this journey.
+
+- My wonderful TA's: ❤️ Seanny Phoenix , ❤️ Erik Heikkila, ❤️ Melissa Young, ❤️ Zachary Welsandt, ❤️ David Schawel, ❤️ Mac Jankowski, ❤️ Sarah The King, and ❤️ Connie Lancaster.
+
+Yall forever in my favors, thank you for everything.
