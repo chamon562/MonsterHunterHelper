@@ -33,6 +33,8 @@
 <div>
   <h2 id="wepTitles">Durability</h2>
   <ul>
+    <% if(weapons.durability) { %>
+
     <li>red: <%= weapons.durability[0].red %></li>
     <li>orange: <%= weapons.durability[0].orange %></li>
     <li>yellow: <%= weapons.durability[0].yellow %></li>
@@ -40,9 +42,22 @@
     <li>blue: <%= weapons.durability[0].blue %></li>
     <li>white: <%= weapons.durability[0].white %></li>
     <li>purple: <%= weapons.durability[0].purple %></li>
+    <% } else { %>
+    <p>No durablity to show</p>
+
+    <% } %>
   </ul>
 </div>
 
+<div>
+  <!-- <h2 id="wepTitles">Ammo</h2>
+  <% //for(let i = 0; i < weapons.ammo.length; i++) { %>
+    <%// ammo = weapons.ammo[i] %>
+    <li>Ammo Type: <%= //ammo.type%> <br/>
+      Capacity: <%= //ammo.capacities %> 
+    </li>
+ <% //} %> -->
+</div>
 <div>
   <h2 id="wepTitles">Crafting</h2>
   <ul>
@@ -98,12 +113,12 @@
 <h3 id="wepTitles">Comments</h3>
 <!-- didnt need weapons cuz passed in comments -->
 <% comments.forEach(comment => { %>
-  <div style="width: 20%; background: transparent; color: blue;" class="well">
-    <p><span style="color: rgb(59, 227, 44);">Name:</span> <%= comment.name %></p>
-    <p style="color: yellow;"><%= comment.content %></p>
-  </div>
-  <% }) %>
-           
+<div style="width: 20%; background: transparent; color: blue;" class="well">
+  <p><span style="color: rgb(59, 227, 44);">Name:</span> <%= comment.name %></p>
+  <p style="color: yellow;"><%= comment.content %></p>
+</div>
+<% }) %>
+
 <form method="POST" action="/weapon/<%= weapons.id %>">
   <label for="name"><span style="color: rgb(59, 227, 44);">Name</span></label>
   <input
