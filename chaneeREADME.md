@@ -3,15 +3,12 @@
 (https://project-two-channee.herokuapp.com/)
 
 # Setup 
-- Hello and please make sure to npm install after forking and cloning this repo. 
+- Hello and please make sure to type npm install in the terminal for initial setup after forking and cloning this repo. 
 
-## Part 1
+## Part 1 of My project 2
 
 Review the [Project 2 requirements](https://tmdarneille.gitbook.io/sei-ga-sea/11-projects/project-2#project-feedback-evaluation) and check out some [examples](https://www.google.com/url?q=https://tmdarneille.gitbook.io/sei-ga-sea/11-projects/past-projects/project2&sa=D&source=calendar&ust=1597596784944000&usg=AOvVaw1ihTzKFunxKsL2f6sIYdlC).
 
-In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://revelry.co/user-stories-that-dont-suck/) for each idea and a link to the API(s) you want to use for it.
-
----
 
 1. THIS IS MY CHOICE. just throwing another video game api idea, this is another great game that people should know about. https://docs.mhw-db.com/
 
@@ -41,9 +38,7 @@ Who => : Monster hunter is a big game that has so many things to do, but just li
 
 What => : The app is to help MH players see weapons, and Armor attributes as well as see the monsters they need to defeat in order to get the items needed to craft what they want.
 
-## Why :
-
-This website aims to help provide game guindance, and gives a faster way to
+Why => : This website aims to help provide game guindance, and gives a faster way to
 access information MH Players need in order to enhance their playing experience. For example, the
 Monster's weakness and its items drops. Once the player clicks on the
 Monster it will show what the monster drops, and can make their judgement
@@ -63,6 +58,8 @@ same can go for the weapons. Happy hunting!
 ---
 
 Make a PR when you're done!
+
+# Channee Math Project 2 Details
 
 ## Aug 14th, 2020 Progress
 
