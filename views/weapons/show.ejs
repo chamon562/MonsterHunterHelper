@@ -116,8 +116,24 @@
 <div style="width: 20%; background: transparent; color: blue;" class="well">
   <p><span style="color: rgb(59, 227, 44);">Name:</span> <%= comment.name %></p>
   <p style="color: yellow;"><%= comment.content %></p>
+  <div id="container">
+    <i onclick="Toggle()" id="btn" class="far fa-heart"></i>
+  </div>
 </div>
 <% }) %>
+<script>
+
+let btn = document.getElementById('btn');
+function Toggle(){
+  if(btn.classList.contains ("far")){
+    btn.classList.remove("far")
+    btn.classList.add("fas")
+  }else{
+    btn.classList.remove("fas")
+    btn.classList.add("far")
+  }
+}
+</script>
 
 <form method="POST" action="/weapon/<%= weapons.id %>">
   <label for="name"><span style="color: rgb(59, 227, 44);">Name</span></label>

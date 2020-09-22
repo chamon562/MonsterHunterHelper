@@ -66,6 +66,9 @@ app.use((req, res, next) => {
   next()
 })
 
+// app.use(function(req, res) {
+//   res.status(404).render("error")
+// })
 
 app.get('/', (req, res) => {
   console.log(res.locals.alerts)
@@ -77,6 +80,7 @@ app.get('/', (req, res) => {
 app.get('/home', isLoggedIn , (req,res) =>{
   res.render('home')
 })
+
 
 app.use('/auth', require('./routes/auth'));
 app.use('/weapon', require('./routes/weapon'))
@@ -90,9 +94,13 @@ app.use('/wepFave', require('./routes/wepFave'))
 
 
 
+
 const port = process.env.PORT || 1337;
 const server = app.listen(port, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${port} 🎧`);
 });
 
+app.get('*', (req, res) => {
+  res.render('error')
+})
 module.exports = server;
